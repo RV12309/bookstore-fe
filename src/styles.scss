@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+// @import "primeng/resources/themes/lara-light-blue/theme.css";
+// @import "primeng/resources/primeng.css";
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "src/assets/scss/reset.scss";
+@import "src/assets/scss/customs.scss";
+
+html {
+  font-family: 'Quicksand', sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+}
+
+
+.p-button {
+  @apply rounded-lg;
+}
+
+input, textarea {
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+button {
+  outline: none;
+  border: none;
+}

@@ -1,0 +1,34 @@
+.button {
+  @apply cursor-pointer border-none font-semibold flex items-center justify-center h-12 rounded-lg duration-300;
+  &-primary {
+    @apply bg-primary-blue text-white;
+    &:hover{
+      @apply bg-primary-blue/60 shadow-sm shadow-primary-blue/30
+    }
+  }
+  &-gray {
+    @apply bg-gray text-primary-blue duration-300;
+    &:hover{
+      @apply bg-gray/60 shadow-sm shadow-gray/30
+    }
+  }
+  &-gray-outline {
+    @apply bg-white border border-solid border-gray duration-300 text-primary-blue;
+    &:hover{
+    }
+  }
+}
+.swiper-button-next, .swiper-button-prev {
+  @apply text-primary-blue;
+}
+
+.card{
+  &-blur{
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+  }
+}
+
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+  background: red !important;
+}
