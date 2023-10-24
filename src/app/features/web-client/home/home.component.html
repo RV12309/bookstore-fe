@@ -1,7 +1,7 @@
 <div>
   <!-- BANNER -->
   <div class="flex gap-x-5 h-[560px]">
-    <div class="w-2/3 bg-red-200 rounded-xl overflow-hidden relative">
+    <div class="flex-1 bg-red-200 rounded-xl overflow-hidden relative">
       <swiper-container
         mousewheel-force-to-axis="true"
         navigation="true"
@@ -49,57 +49,62 @@
                 [ngStyle]="{'background-image': 'url(' + item + ')'}"
                 class="bg-cover bg-center card-blur h-full"
               >
-            </div>
-            <div class="absolute z-10 top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] text-center">
-              <p class="font-bold text-white text-4xl ">Best Seller</p>
-              <p class="text-white mt-2 mb-5">Based sales this week</p>
-              <img
-                [src]="item"
-                class="w-full aspect-3/4 object-cover rounded-xl border-2 border-solid border-white"
-                alt=""
-              >
-              <p class="font-semibold text-white mt-3">Pushing Clouds</p>
-              <p class="text-white mt-3 uppercase">advanture, science, comedy</p>
-              <button
-                pButton
-                pRipple
-                class="button bg-white text-neutral-800 font-bold mx-auto mt-4"
-              >
-                <span class="mr-3">USD 45.25</span>
-              </button>
-            </div>
-            <!-- <img
-              [src]="item"
-              class="h-full w-auto object-contain"
-              alt=""
-            > -->
-
+              </div>
+              <div class="absolute z-10 top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] text-center">
+                <p class="font-bold text-white text-4xl ">Best Seller</p>
+                <p class="text-white mt-2 mb-5">Based sales this week</p>
+                <img
+                  [src]="item"
+                  class="w-full aspect-3/4 object-cover rounded-xl border-2 border-solid border-white"
+                  alt=""
+                >
+                <p class="font-semibold text-white mt-3">Pushing Clouds</p>
+                <p class="text-white mt-3 uppercase">advanture, science, comedy</p>
+                <button
+                  pButton
+                  pRipple
+                  class="button bg-white text-neutral-800 font-bold mx-auto mt-4"
+                >
+                  <span class="mr-3">USD 45.25</span>
+                </button>
+              </div>
             </div>
           </swiper-slide>
         </ng-container>
       </swiper-container>
       <div class="absolute bottom-40 left-20 flex gap-x-4 z-10">
-        <!-- <button
-          pButton
-          pRipple
-          class="button bg-primary-blue"
-        >
-          <span class="mr-3">Get the deal</span>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-          </svg>
-        </button>
-        <button
-          pButton
-          pRipple
-          class="button button-gray-outline"
-        >
-          <span class="mr-3">See other promos</span>
-        </button> -->
       </div>
     </div>
   </div>
-  <div class="mt-5">
+  <div class="mt-10">
     <app-about-me></app-about-me>
+  </div>
+  <div class="mt-10 grid grid-cols-2 gap-x-6">
+    <ng-container *ngFor="let i of [1,2]">
+      <div class="banner rounded-2xl p-16">
+        <p class="font-bold text-5xl text-white">Recommend For You</p>
+        <p class="text-white mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti rerum perferendis hic consequatur tenetur nemo?</p>
+        <div class="grid grid-cols-4 gap-x-6 mt-5">
+          <ng-container *ngFor="let j of booksTrend" >
+            <div
+              class="aspect-3/4 rounded-xl border-2 border-solid border-white bg-cover bg-center hover:-translate-y-2 duration-300 hover:scale-110"
+              [ngStyle]="{'background-image': 'url(' + j + ')'}"
+            ></div>
+          </ng-container>
+        </div>
+        <div class="flex justify-end mt-5">
+          <button
+            pButton
+            pRipple
+            class="button bg-primary-blue"
+          >
+            <span class="mr-3">More</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>

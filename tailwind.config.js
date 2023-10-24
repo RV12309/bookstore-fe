@@ -7,7 +7,9 @@ module.exports = {
     extend: {
       colors: {
         'primary-blue': '#6C5DD4',
-        'gray': '#F0F0F0'
+        'purple': '#6C5DD4',
+        'gray': '#F0F0F0',
+        'purple-light': '#F1EEFF'
       },
       width: {
         md: '728px', //'768px'
