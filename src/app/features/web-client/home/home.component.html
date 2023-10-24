@@ -81,7 +81,7 @@
   </div>
   <div class="mt-10 grid grid-cols-2 gap-x-6">
     <ng-container *ngFor="let i of [1,2]">
-      <div class="banner rounded-2xl p-16">
+      <div class="banner rounded-2xl p-16 relative">
         <p class="font-bold text-5xl text-white">Recommend For You</p>
         <p class="text-white mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti rerum perferendis hic consequatur tenetur nemo?</p>
         <div class="grid grid-cols-4 gap-x-6 mt-5">
@@ -92,18 +92,13 @@
             ></div>
           </ng-container>
         </div>
-        <div class="flex justify-end mt-5">
-          <button
-            pButton
-            pRipple
-            class="button bg-primary-blue"
-          >
-            <span class="mr-3">More</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </button>
-        </div>
+        <button
+          class="w-fit aspect-square p-4 rounded-full center shadow-2xl animate-bounce absolute right-10 bottom-20"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary-blue">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </button>
       </div>
     </ng-container>
   </div>
