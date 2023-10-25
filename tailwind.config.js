@@ -21,6 +21,9 @@ module.exports = {
         '4/3': '4 / 3',
         '3/4': '3 / 4'
       },
+      boxShadow: {
+        '#1': '#6C5DD470 0px 7px 29px 0px',
+      }
 
     },
   },

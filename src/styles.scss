@@ -30,8 +30,10 @@ input, textarea {
   font-family: 'Inter', sans-serif;
 }
 button {
+  font-family: 'Inter', sans-serif;
   outline: none;
   border: none;
+  @apply cursor-pointer;
 }
 p{
   line-height: 1.3;

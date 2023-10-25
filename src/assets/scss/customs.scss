@@ -3,7 +3,7 @@
   &-primary {
     @apply bg-primary-blue text-white;
     &:hover{
-      @apply bg-primary-blue/60 shadow-sm shadow-primary-blue/30
+      @apply bg-primary-blue/90 ring ring-offset-2 ring-purple;
     }
   }
   &-gray {
@@ -42,6 +42,9 @@
   @apply flex justify-center items-center
 }
 
-button {
-  @apply cursor-pointer
+.title {
+  @apply text-center text-neutral-500;
+  &-head{
+    @apply font-bold text-5xl text-purple mb-3;
+  }
 }
