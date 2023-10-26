@@ -7,7 +7,7 @@ import { ILogin, ILoginForm, IRegisterForm, IVerifyForm } from 'src/app/core/int
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServicesService {
+export class AuthService {
 
   private baseUrl = env.baseUrl;
   constructor(private http: HttpClient) { }
