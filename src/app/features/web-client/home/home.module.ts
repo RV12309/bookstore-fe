@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from "@angular/router";
 import { ButtonModule } from 'primeng/button';
 import { AboutMeModule } from "src/app/components/about-me";
+import { BookCardModule } from "src/app/components/book-card";
 
 
 
@@ -22,7 +23,8 @@ const routes:Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ButtonModule,
-    AboutMeModule
+    AboutMeModule,
+    BookCardModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
