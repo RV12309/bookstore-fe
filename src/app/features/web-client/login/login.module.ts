@@ -2,23 +2,19 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { ActivateAccountComponent } from './activate-account/activate-account.component';
-import { RegisterComponent } from './register.component';
+import { LoginComponent } from './login.component';
 
 
-const routes:Routes = [
+const routes: Routes = [
   {
     path: '',
-    component: RegisterComponent
-  },
-  {
-    path: 'verify',
-    component: RegisterComponent
+    component: LoginComponent
   }
 ]
-
 @NgModule({
-  declarations: [RegisterComponent, ActivateAccountComponent],
+  declarations: [
+    LoginComponent
+  ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -26,4 +22,4 @@ const routes:Routes = [
     ReactiveFormsModule,
   ]
 })
-export class RegisterModule { }
+export class LoginModule { }

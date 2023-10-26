@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('src/app/features/web-client/register/register.module').then(m => m.RegisterModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('src/app/features/web-client/login/login.module').then(m => m.LoginModule)
   }
 ];
 

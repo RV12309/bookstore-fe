@@ -1,7 +1,10 @@
 export enum WCEndPoint {
-    Login = 'v1/auth/login',
-    UserRegister = 'v1/users/register',
-    AccVerify = 'v1/accounts/verification'
+    Auth = 'v1/auth',
+    Customers = 'v1/customers',
+    Account = 'v1/accounts',
+    Book = 'v1/books',
+    Category = 'v1/categories',
+    Seller = 'v1/sellers'
 }
 
 export enum env {
