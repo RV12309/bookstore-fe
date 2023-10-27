@@ -1,10 +1,10 @@
 export enum WCEndPoint {
-    Auth = 'v1/auth',
-    Customers = 'v1/customers',
-    Account = 'v1/accounts',
-    Book = 'v1/books',
-    Category = 'v1/categories',
-    Seller = 'v1/sellers'
+    Auth = 'api/v1/auth',
+    Customers = 'api/v1/customers',
+    Account = 'api/v1/accounts',
+    Book = 'api/v1/books',
+    Category = 'api/v1/categories',
+    Seller = 'api/v1/sellers'
 }
 
 export enum env {

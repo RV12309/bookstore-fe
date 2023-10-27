@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth/auth.guard';
+import { NonLoginGuard } from './core/guards/non-login/non-login.guard';
 
 
 const routes: Routes = [
@@ -11,11 +12,13 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    loadChildren: () => import('src/app/features/web-client/register/register.module').then(m => m.RegisterModule)
+    loadChildren: () => import('src/app/features/web-client/register/register.module').then(m => m.RegisterModule),
+    canActivate: [NonLoginGuard]
   },
   {
     path: 'login',
-    loadChildren: () => import('src/app/features/web-client/login/login.module').then(m => m.LoginModule)
+    loadChildren: () => import('src/app/features/web-client/login/login.module').then(m => m.LoginModule),
+    canActivate: [NonLoginGuard]
   }
 ];
 
