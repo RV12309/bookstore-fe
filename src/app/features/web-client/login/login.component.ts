@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit{
         next: (data: ILogin) => {
           sessionStorage.setItem('token', data.data?.token);
           this.route.navigate(['/']);
-        },,
+        },
         error: error => {
           this.messageService.add(
             { severity: 'error', summary: 'error', detail: error?.message || 'Lỗi hệ thống' }
