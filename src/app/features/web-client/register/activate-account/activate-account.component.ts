@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 
@@ -9,14 +9,14 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
   styleUrls: ['./activate-account.component.scss']
 })
 export class ActivateAccountComponent implements OnInit{
-  public loginForm: FormGroup ;
+  public verifyForm: FormGroup ;
   
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private route: Router
   ){
-    this.loginForm = this.fb.group({
+    this.verifyForm = this.fb.group({
       username: [null, Validators.required],
       verificationCode: [null, Validators.required],
   })
@@ -25,12 +25,23 @@ export class ActivateAccountComponent implements OnInit{
   }
 
   submit(){
-    this.authService.verify(this.loginForm?.value).subscribe(
+    this.verifyForm.markAllAsTouched();
+    if(this.verifyForm?.invalid){
+      return;
+    }
+    this.authService.verify(this.verifyForm?.value).subscribe(
       (res => {
         if(res?.code === '00'){
           this.route.navigate(['/login'])
         }
       })
     )
+  }
+
+  get usernameControl(): FormControl {
+    return this.verifyForm.get('username') as FormControl;
+  }
+  get verificationCodeControl(): FormControl {
+    return this.verifyForm.get('verificationCode') as FormControl;
   }
 }

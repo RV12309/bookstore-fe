@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ILogin } from 'src/app/core/interfaces/auth.interface';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
@@ -48,6 +48,13 @@ export class LoginComponent implements OnInit{
         }
       }
     )
+  }
+
+  get usernameControl(): FormControl {
+    return this.loginForm.get('username') as FormControl;
+  }
+  get passwordControl(): FormControl {
+    return this.loginForm.get('password') as FormControl;
   }
 
 }
