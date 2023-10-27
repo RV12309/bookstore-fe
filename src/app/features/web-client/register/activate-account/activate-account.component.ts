@@ -18,18 +18,17 @@ export class ActivateAccountComponent implements OnInit{
   ){
     this.loginForm = this.fb.group({
       username: [null, Validators.required],
-      erificationCode: [null, Validators.required],
+      verificationCode: [null, Validators.required],
   })
   }
   ngOnInit(): void {
   }
 
   submit(){
-    console.log(this.loginForm?.value);
     this.authService.verify(this.loginForm?.value).subscribe(
       (res => {
-        if(res?.code === '00') {
-          this.route.navigate(['/register/verify'])
+        if(res?.code === '00'){
+          this.route.navigate(['/login'])
         }
       })
     )

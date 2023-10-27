@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class RegisterComponent implements OnInit{
   
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: Router
   ){
     this.registerForm = this.fb.group({
       username: [null, Validators.required],
@@ -25,10 +27,11 @@ export class RegisterComponent implements OnInit{
   }
 
   submit(){
-    console.log(this.registerForm?.value);
     this.authService.register(this.registerForm?.value).subscribe(
       (res => {
-        console.log(res)
+        if(res?.code === '00') {
+          this.route.navigate(['/register/verify'])
+        }
       })
     )
   }
