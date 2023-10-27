@@ -10,15 +10,10 @@ const routes: Routes = [
     loadChildren: () => import('src/app/core/layouts/web-client/in-login/in-login.module').then(m => m.InLoginModule),
     canActivate: [AuthGuard]
   },
+
   {
-    path: 'register',
-    loadChildren: () => import('src/app/features/web-client/register/register.module').then(m => m.RegisterModule),
-    canActivate: [NonLoginGuard]
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('src/app/features/web-client/login/login.module').then(m => m.LoginModule),
-    canActivate: [NonLoginGuard]
+    path: 'auth',
+    loadChildren: () => import('src/app/core/layouts/web-client/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
   }
 ];
 
