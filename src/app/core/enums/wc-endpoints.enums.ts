@@ -8,5 +8,5 @@ export enum WCEndPoint {
 }
 
 export enum env {
-    baseUrl = "http://ec2-3-27-16-39.ap-southeast-2.compute.amazonaws.com/"
+    baseUrl = "http://localhost:9000/"
 }
