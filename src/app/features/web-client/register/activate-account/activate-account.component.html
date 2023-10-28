@@ -6,7 +6,7 @@
     <div class="container">
       <label for="uname"><b>Tên đăng nhập</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required
-      formControlName="username">
+      formControlName="username" appNonSpace>
       <ng-container>
         <div *ngIf="verifyForm?.invalid && usernameControl?.touched" class="error-text">
           <p *ngIf="usernameControl?.hasError('required')">
@@ -17,7 +17,7 @@
 
       <label for="psw"><b>Mã kích hoạt</b></label>
       <input type="text" placeholder="Nhập mã kích hoạt" name="psw" required
-      formControlName="verificationCode">
+      formControlName="verificationCode" appNonSpace>
       <ng-container>
         <div *ngIf="verifyForm?.invalid && verificationCodeControl?.touched" class="error-text">
           <p *ngIf="verificationCodeControl?.hasError('required')">
