@@ -1,16 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { CategoryService } from 'src/app/core/services/category/category.service';
+import { ModalService } from 'src/app/core/services/modal';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
     constructor(
-        private route: Router
+        private route: Router,
+        private categoryService: CategoryService
     ){
+    }
+    ngOnInit(): void {
+        this.getCategory()
     }
 
   items = [
@@ -47,6 +54,17 @@ export class HeaderComponent {
         ]
     }
 ];
+
+    getCategory(){
+        this.categoryService.getCategoryList().subscribe({
+            next: (res => {
+                console.log(res)
+            }),
+            error: error => {
+                console.log(error?.message)
+              }
+        })
+    }
 
     navigateUser(){
         const token = sessionStorage.getItem('token');
