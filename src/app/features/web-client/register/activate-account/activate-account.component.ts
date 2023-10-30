@@ -10,11 +10,12 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 })
 export class ActivateAccountComponent implements OnInit{
   public verifyForm: FormGroup ;
-  
+  public popupConfirm = false;
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private route: Router
+    private router: Router
   ){
     this.verifyForm = this.fb.group({
       username: [null, Validators.required],
@@ -32,10 +33,14 @@ export class ActivateAccountComponent implements OnInit{
     this.authService.verify(this.verifyForm?.value).subscribe(
       (res => {
         if(res?.code === '00'){
-          this.route.navigate(['/login'])
+          this.router.navigate(['/login'])
         }
       })
     )
+  }
+
+  back(){
+    this.router.navigate(['/auth/register']);
   }
 
   get usernameControl(): FormControl {

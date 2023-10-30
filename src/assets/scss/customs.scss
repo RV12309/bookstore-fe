@@ -6,6 +6,12 @@
       @apply bg-primary-blue/90 ring ring-offset-2 ring-purple;
     }
   }
+  &-primary-outline {
+    @apply bg-purple-light text-purple;
+    &:hover{
+      @apply bg-purple-light ring ring-offset-2 ring-purple;
+    }
+  }
   &-gray {
     @apply bg-gray text-primary-blue duration-300;
     &:hover{

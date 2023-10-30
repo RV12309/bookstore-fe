@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DirectivesModule } from 'src/app/core/directives/directives.module';
 import { ActivateAccountComponent } from './activate-account/activate-account.component';
 import { RegisterComponent } from './register.component';
-
+import { SidebarModule } from 'primeng/sidebar';
 
 const routes:Routes = [
   {
@@ -25,7 +25,8 @@ const routes:Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    DirectivesModule
+    DirectivesModule,
+    SidebarModule
   ]
 })
 export class RegisterModule { }
