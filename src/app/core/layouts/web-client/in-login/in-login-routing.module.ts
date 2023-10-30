@@ -10,9 +10,13 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () => import('src/app/features/web-client/home/home.module').then(m => m.HomeModule)
+      },
+      {
+        path: ':category',
+        loadChildren: () => import('src/app/features/web-client/books-list/books-list.module').then(m => m.BooksListModule)
       }
     ]
-  }
+  },
 ];
 
 @NgModule({
