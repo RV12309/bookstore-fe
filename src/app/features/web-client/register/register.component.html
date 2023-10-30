@@ -3,7 +3,7 @@
     <div class="container">
       <label for="uname"><b>Tên đăng nhập</b></label>
       <input type="text" placeholder="Nhập tên đăng nhập" name="uname" required
-      formControlName="username">
+      formControlName="username" appNonSpace>
       <ng-container>
         <div *ngIf="registerForm?.invalid && usernameControl?.touched" class="error-text">
           <p *ngIf="usernameControl?.hasError('required')">
@@ -14,7 +14,7 @@
   
       <label for="psw"><b>Mật khẩu</b></label>
       <input type="password" placeholder="Nhập mật khẩu" name="psw" required
-      formControlName="password">
+      formControlName="password" appNonSpace>
       <ng-container>
         <div *ngIf="registerForm?.invalid && passwordControl?.touched" class="error-text">
           <p *ngIf="passwordControl?.hasError('required')">
@@ -25,14 +25,14 @@
 
       <label for="psw"><b>Email</b></label>
       <input type="text" placeholder="Nhập email" name="email" required
-      formControlName="email">
+      formControlName="email" appNonSpace>
       <ng-container>
         <div *ngIf="registerForm?.invalid && emailControl?.touched" class="error-text">
           <p *ngIf="emailControl?.hasError('required')">
             Vui lòng nhập email
           </p>
           <p *ngIf="emailControl?.hasError('pattern')">
-            Email sai định dạng vui lòng kiểm tra lai
+            Email sai định dạng vui lòng kiểm tra lại
           </p>
         </div>
       </ng-container>
@@ -41,6 +41,6 @@
     </div>
   
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Quay lại</button>
+      <button type="button" (click)="back()" class="cancelbtn">Quay lại</button>
     </div>
   </form>

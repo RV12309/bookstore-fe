@@ -40,6 +40,10 @@ export class RegisterComponent implements OnInit{
     )
   }
 
+  back(){
+    this.route.navigate(['/']);
+  }
+
   get usernameControl(): FormControl {
     return this.registerForm.get('username') as FormControl;
   }

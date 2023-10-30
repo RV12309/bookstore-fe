@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+    constructor(
+        private route: Router
+    ){
+    }
 
   items = [
     {
@@ -41,5 +47,15 @@ export class HeaderComponent {
         ]
     }
 ];
+
+    navigateUser(){
+        const token = sessionStorage.getItem('token');
+        if(token){
+            this.route.navigate(['/']);
+            sessionStorage.removeItem('token');
+        } else {
+            this.route.navigate(['/auth/login']);
+        }
+    }
 
 }
