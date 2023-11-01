@@ -5,6 +5,7 @@ import { ILogin } from 'src/app/core/interfaces/auth.interface';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { RegisterComponent } from "../register/register.component";
 import { MessageService } from "primeng/api";
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -37,8 +38,9 @@ export class LoginComponent implements OnInit{
     }
     this.authService.login(this.loginForm?.value).subscribe(
       {
-        next: (data: ILogin) => {
-          sessionStorage.setItem('token', data.data?.token);
+        next: (res: ILogin) => {
+          const data = jwtDecode(res?.data.token);
+          sessionStorage.setItem('userData', JSON.stringify(data));
           this.route.navigate(['/']);
         },
         error: error => {
