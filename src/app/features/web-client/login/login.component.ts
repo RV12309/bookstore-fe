@@ -5,6 +5,9 @@ import { ILogin } from 'src/app/core/interfaces/auth.interface';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { RegisterComponent } from "../register/register.component";
 import { MessageService } from "primeng/api";
+import { jwtDecode } from 'jwt-decode';
+import { StoreService } from "src/app/core/services";
+import { StorageKey, TokenStorageKey } from "src/app/core/enums";
 
 @Component({
   selector: 'app-login',
@@ -20,7 +23,8 @@ export class LoginComponent implements OnInit{
     private fb: FormBuilder,
     private authService: AuthService,
     private route: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private storeService: StoreService
   ){
     this.loginForm = this.fb.group({
       username: [null, Validators.required],
@@ -37,8 +41,8 @@ export class LoginComponent implements OnInit{
     }
     this.authService.login(this.loginForm?.value).subscribe(
       {
-        next: (data: ILogin) => {
-          sessionStorage.setItem('token', data.data?.token);
+        next: (res: ILogin) => {
+          this.storeService.setSession(TokenStorageKey.accessToken, res?.data.token);
           this.route.navigate(['/']);
         },
         error: error => {
