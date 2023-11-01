@@ -52,7 +52,7 @@ export class HeaderComponent {
         const token = sessionStorage.getItem('token');
         if(token){
             this.route.navigate(['/']);
-            sessionStorage.removeItem('token');
+            sessionStorage.removeItem('userData');
         } else {
             this.route.navigate(['/auth/login']);
         }
