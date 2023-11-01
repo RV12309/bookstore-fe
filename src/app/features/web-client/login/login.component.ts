@@ -7,7 +7,7 @@ import { RegisterComponent } from "../register/register.component";
 import { MessageService } from "primeng/api";
 import { jwtDecode } from 'jwt-decode';
 import { StoreService } from "src/app/core/services";
-import { StorageKey } from "src/app/core/enums";
+import { StorageKey, TokenStorageKey } from "src/app/core/enums";
 
 @Component({
   selector: 'app-login',
@@ -42,9 +42,7 @@ export class LoginComponent implements OnInit{
     this.authService.login(this.loginForm?.value).subscribe(
       {
         next: (res: ILogin) => {
-          this.storeService.setSession(StorageKey.accessToken, res?.data.token);
-          const data = jwtDecode(res?.data.token);
-          sessionStorage.setItem('userData', JSON.stringify(data));
+          this.storeService.setSession(TokenStorageKey.accessToken, res?.data.token);
           this.route.navigate(['/']);
         },
         error: error => {
