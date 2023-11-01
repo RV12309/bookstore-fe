@@ -62,3 +62,25 @@
   border-radius: 12px;
   border: 1px solid rgba(209, 213, 219, 0.3);
 }
+
+.p-menu {
+  @apply p-3;
+  .p-menu-list{
+  }
+  .p-menuitem{
+    @apply  p-2 hover:bg-purple-light rounded-md flex gap-x-3 duration-300;
+    .p-menuitem-text:hover, .p-menuitem-icon:hover {
+      @apply bg-transparent;
+    }
+    .p-menuitem-text{
+      @apply font-medium;
+    }
+    .p-menuitem-icon{
+      @apply mr-2;
+    }
+    a:hover{
+      @apply bg-purple-light w-full;
+    }
+  }
+}
+
