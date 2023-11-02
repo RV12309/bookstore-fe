@@ -61,6 +61,69 @@ export class HomeComponent implements OnInit{
       price: 23321,
       discountPrice: 684
     }
+  ];
+
+  public salesFilm = [
+    {
+      poster: 'https://www.komar.de/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/4/-/4-4127_avengers_endgame_movie_poster_web.jpg',
+      title: 'Avengers Endgame',
+      discount: 500,
+      price: 1200,
+      sale: Math.floor(Math.random() * 100) + 1,
+      categories: [
+        'action',
+        'horror'
+      ],
+      rate: 3
+    },
+    {
+      poster: 'https://www.komar.de/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/4/-/4-4127_avengers_endgame_movie_poster_web.jpg',
+      title: 'Avengers Endgame',
+      discount: 500,
+      price: 1200,
+      sale: Math.floor(Math.random() * 100) + 1,
+      categories: [
+        'action',
+        'horror'
+      ],
+      rate: 4
+    },
+    {
+      poster: 'https://www.komar.de/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/4/-/4-4127_avengers_endgame_movie_poster_web.jpg',
+      title: 'Avengers Endgame',
+      discount: 500,
+      price: 1200,
+      sale: Math.floor(Math.random() * 100) + 1,
+      categories: [
+        'action',
+        'horror'
+      ],
+      rate: 1
+    },
+    {
+      poster: 'https://www.komar.de/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/4/-/4-4127_avengers_endgame_movie_poster_web.jpg',
+      title: 'Avengers Endgame',
+      discount: 500,
+      price: 1200,
+      sale: Math.floor(Math.random() * 100) + 1,
+      categories: [
+        'action',
+        'horror'
+      ],
+      rate: 3
+    },
+    {
+      poster: 'https://www.komar.de/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/4/-/4-4127_avengers_endgame_movie_poster_web.jpg',
+      title: 'Avengers Endgame',
+      discount: 500,
+      price: 1200,
+      sale: Math.floor(Math.random() * 100) + 1,
+      categories: [
+        'action',
+        'horror'
+      ],
+      rate: 5
+    }
   ]
 
   constructor(

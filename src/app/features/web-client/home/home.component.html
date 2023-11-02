@@ -143,5 +143,16 @@
       <p class="title-head">Flash Sales</p>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt fugiat atque consequuntur maiores sint pariatur. Fuga natus officiis a quidem?</p>
     </div>
+    <div class="box-border">
+      <div class="grid grid-cols-5 gap-x-10 h-[500px]">
+        <ng-container *ngFor="let i of salesFilm">
+          <app-book-card
+            [infoFilm]="i"
+          >
+          </app-book-card>
+        </ng-container>
+      </div>
+      <p-paginator [first]="0" [rows]="10" [totalRecords]="120"></p-paginator>
+    </div>
   </ng-container>
 </div>

@@ -5,6 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { ButtonModule } from 'primeng/button';
 import { AboutMeModule } from "src/app/components/about-me";
 import { BookCardModule } from "src/app/components/book-card";
+import { PaginatorModule } from 'primeng/paginator';
 
 
 
@@ -24,7 +25,8 @@ const routes:Routes = [
     RouterModule.forChild(routes),
     ButtonModule,
     AboutMeModule,
-    BookCardModule
+    BookCardModule,
+    PaginatorModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
