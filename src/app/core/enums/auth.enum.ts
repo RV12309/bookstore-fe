@@ -29,5 +29,6 @@ export enum StorageKey {
   accessToken = 'accessToken',
   expireTime = 'expireTime',
   refreshToken = 'refreshToken',
-  isExpand = 'isExpand'
+  isExpand = 'isExpand',
+  isOnl = 'isOnl'
 }

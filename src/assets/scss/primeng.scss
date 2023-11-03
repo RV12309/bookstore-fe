@@ -142,3 +142,18 @@ input{
   }
 }
 
+//Toast
+.p-toast{
+  .p-toast-message{
+    @apply p-3 rounded-xl mb-4;
+    .p-toast-message-content{
+      .p-toast-message-icon{
+        @apply mr-3;
+      }
+      .p-toast-summary{
+        @apply font-bold mb-1;
+      }
+    }
+
+  }
+}
