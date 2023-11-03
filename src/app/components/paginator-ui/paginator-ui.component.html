@@ -1,5 +1,7 @@
 <p-paginator
-  [first]="0"
-  [rows]="10"
-  [totalRecords]="120"
+  (onPageChange)="onPageChange($event)"
+  [first]="first"
+  [rows]="rows"
+  [totalRecords]="totalRecords"
+  [rowsPerPageOptions]="rowsPerPageOptions"
 ></p-paginator>

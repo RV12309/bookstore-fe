@@ -47,3 +47,25 @@ p{
   text-align: left;
   padding-left:6px;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply rounded-lg;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-purple/50;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-purple/80
+}
+
+@import "assets/scss/primeng.scss";

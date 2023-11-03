@@ -7,8 +7,7 @@ import { AboutMeModule } from "src/app/components/about-me";
 import { BookCardModule } from "src/app/components/book-card";
 import { PaginatorModule } from 'primeng/paginator';
 import { PaginatorUiModule } from "src/app/components/paginator-ui";
-
-
+import { AnimateOnScrollModule } from 'primeng/animateonscroll';
 
 const routes:Routes = [
   {
@@ -28,8 +27,8 @@ const routes:Routes = [
     AboutMeModule,
     BookCardModule,
     PaginatorModule,
-    PaginatorUiModule
+    PaginatorUiModule,
+    AnimateOnScrollModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeModule { }
