@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class BookCardComponent {
   @Input() infoFilm:any;
+  @Input() showFavorite:boolean = true;
 
 }

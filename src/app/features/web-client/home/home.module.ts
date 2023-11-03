@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { AboutMeModule } from "src/app/components/about-me";
 import { BookCardModule } from "src/app/components/book-card";
 import { PaginatorModule } from 'primeng/paginator';
+import { PaginatorUiModule } from "src/app/components/paginator-ui";
 
 
 
@@ -26,7 +27,8 @@ const routes:Routes = [
     ButtonModule,
     AboutMeModule,
     BookCardModule,
-    PaginatorModule
+    PaginatorModule,
+    PaginatorUiModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

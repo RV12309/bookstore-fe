@@ -1,5 +1,5 @@
 import { Component, ElementRef, TemplateRef, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Menu } from "primeng/menu";
 
 @Component({
@@ -9,9 +9,9 @@ import { Menu } from "primeng/menu";
 })
 export class HeaderComponent {
   @ViewChild('menuUser', {static: false}) menuUser!:Menu;
-
     constructor(
-        private route: Router
+        private router: Router,
+        private route: ActivatedRoute
     ){
     }
 
@@ -28,20 +28,30 @@ export class HeaderComponent {
       command: () => {
       }
   }
-];
+  ];
 
-    navigateUser(){
-      console.log(true);
+  public menu = [
+    {
+      label: 'Thư viện',
+      icon: 'pi pi-book',
+      command: () => {
+        this.router.navigate(['/products'])
+      }
+  },
+  ];
 
-      this.menuUser.toggle;
-      return;
-        const token = sessionStorage.getItem('token');
-        if(token){
-            this.route.navigate(['/']);
-            sessionStorage.removeItem('userData');
-        } else {
-            this.route.navigate(['/auth/login']);
-        }
-    }
+  navigateUser(){
+    console.log(true);
+
+    this.menuUser.toggle;
+    return;
+      const token = sessionStorage.getItem('token');
+      if(token){
+          this.router.navigate(['/']);
+          sessionStorage.removeItem('userData');
+      } else {
+          this.router.navigate(['/auth/login']);
+      }
+  }
 
 }
