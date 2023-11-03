@@ -1,1 +1,24 @@
-<p>seller-layout works!</p>
+<div class="flex h-screen">
+  <div class="">
+    <app-sidebar-menu
+      [menuList]="menus"
+    >
+    </app-sidebar-menu>
+  </div>
+  <div class="flex-1 p-3">
+    <div class="grid grid-cols-3 border-b border-solid border-purple-light pb-3">
+      <div class="flex justify-end col-span-2">
+        <div class="relative w-1/2">
+          <img src="assets/icons/default/ic-search.svg" class="w-6 h-6 absolute right-3 top-1/2 -translate-y-[50%]" alt="">
+          <input type="text" class="pr-10 w-full" pInputText/>
+        </div>
+      </div>
+      <div class="flex justify-end">
+        <p-avatar image="https://thumbs.dreamstime.com/b/cartoon-monster-face-vector-halloween-happy-monster-square-avatar-funny-monster-mask-aline-character-one-eye-illustration-alien-97158179.jpg" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+      </div>
+    </div>
+    <div class="overflow-y-scroll h-[calc(100vh-70px)] pt-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

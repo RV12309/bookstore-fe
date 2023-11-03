@@ -1,4 +1,4 @@
-export enum StorageKey {
+export enum JWTStorageKey {
   role = 'role',
   account = 'account',
   username = 'username',
@@ -25,9 +25,9 @@ export enum AccountStoreKey {
   verificationExpiredAt = 'verificationExpiredAt'
 }
 
-
-export enum TokenStorageKey {
+export enum StorageKey {
   accessToken = 'accessToken',
   expireTime = 'expireTime',
   refreshToken = 'refreshToken',
+  isExpand = 'isExpand'
 }

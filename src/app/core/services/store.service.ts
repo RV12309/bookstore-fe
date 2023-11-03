@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StorageKey, TokenStorageKey } from "../enums";
+import { JWTStorageKey, StorageKey } from "../enums";
 
 @Injectable({
   providedIn: 'root'
@@ -7,19 +7,19 @@ import { StorageKey, TokenStorageKey } from "../enums";
 export class StoreService {
   constructor() { }
 
-  setSession(key: TokenStorageKey, value:string) {
+  setSession(key: StorageKey, value:string) {
     window.sessionStorage.setItem(key, value);
   }
 
-  setLocal(key: TokenStorageKey, value:string) {
+  setLocal(key: StorageKey, value:string) {
     window.localStorage.setItem(key, value);
   }
 
-  getSession(key: TokenStorageKey) {
+  getSession(key: StorageKey) {
     return window.sessionStorage.getItem(key);
   }
 
-  getLocal(key: TokenStorageKey) {
+  getLocal(key: StorageKey) {
     return window.localStorage.getItem(key);
   }
 }

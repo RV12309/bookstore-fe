@@ -19,8 +19,8 @@ const routes: Routes = [
     loadChildren: () => import('src/app/core/layouts/web-client/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
   },
   {
-    path: 'components',
-    component: ComponentsComponent
+    path: 'seller',
+    loadChildren: () => import('src/app/core/layouts/seller/seller-layout/seller-layout.module').then(m => m.SellerLayoutModule)
   },
   {
     path: '**',

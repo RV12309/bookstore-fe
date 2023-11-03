@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { WCEndPoint, env } from 'src/app/core/enums/wc-endpoints.enums';
 import { IJWTResponse, ILogin, ILoginForm, IRegisterForm, IVerifyForm } from 'src/app/core/interfaces/auth.interface';
 import { StoreService } from "../store.service";
-import { StorageKey, TokenStorageKey } from "../../enums";
+import { JWTStorageKey, StorageKey } from "../../enums";
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +28,11 @@ export class AuthService {
   }
 
   decodeToken():IJWTResponse{
-    const accessToken = this.storeService.getSession(TokenStorageKey.accessToken) || '';
+    const accessToken = this.storeService.getSession(StorageKey.accessToken) || '';
     return jwtDecode(accessToken);
   }
 
-  getDataByKey(key:StorageKey){
+  getDataByKey(key:JWTStorageKey){
     const data:IJWTResponse = this.decodeToken();
     return data[key];
   }

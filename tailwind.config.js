@@ -16,7 +16,7 @@ module.exports = {
         'info':'#3da9fc',
         'help': '#9656a1',
         'danger': '#ef4565',
-        
+
       },
       width: {
         md: '728px', //'768px'
@@ -30,6 +30,9 @@ module.exports = {
       },
       boxShadow: {
         '#1': '#6C5DD470 0px 7px 29px 0px',
+      },
+      fontFamily: {
+        'second': ['Grandstander'],
       }
 
     },

@@ -110,7 +110,7 @@
 
 // Input
 input{
-  @apply border border-solid border-purple rounded-xl #{!important};
+  @apply border border-solid border-purple/50 focus:border-purple rounded-xl duration-300 shadow-none #{!important};
 }
 
 // Dropdown
