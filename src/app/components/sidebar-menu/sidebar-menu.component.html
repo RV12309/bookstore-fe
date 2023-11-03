@@ -22,9 +22,9 @@
       *ngFor="let i of item?.children"
     >
     <div
-      class="group flex items-center hover:bg-gray px-2 h-[40px] rounded-lg cursor-pointer mt-1"
+      class="group flex items-center hover:bg-gray px-2 h-[40px] rounded-lg cursor-pointer mt-1 duration-300"
       routerLink="{{i?.route}}"
-      routerLinkActive="bg-purple-light"
+      routerLinkActive="bg-purple-light font-semibold"
       [routerLinkActiveOptions]="{exact: true}"
     >
       <img [src]="'assets/icons/default/'+i?.icon" class="w-6" alt="">
