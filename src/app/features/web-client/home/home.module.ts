@@ -30,5 +30,6 @@ const routes:Routes = [
     PaginatorUiModule,
     AnimateOnScrollModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeModule { }
