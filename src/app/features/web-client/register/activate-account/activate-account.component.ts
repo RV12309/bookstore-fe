@@ -33,7 +33,7 @@ export class ActivateAccountComponent implements OnInit{
     this.authService.verify(this.verifyForm?.value).subscribe(
       (res => {
         if(res?.code === '00'){
-          this.router.navigate(['/login'])
+          this.router.navigate(['/auth/login'])
         }
       })
     )
