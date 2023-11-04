@@ -16,7 +16,7 @@ module.exports = {
         'info':'#3da9fc',
         'help': '#9656a1',
         'danger': '#ef4565',
-
+        'brown-light': '#f9f4ef'
       },
       width: {
         md: '728px', //'768px'

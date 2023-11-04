@@ -1,5 +1,6 @@
 import { PositionModal } from "../enums";
 
+export type TypeModal = 'info' | 'delete' | 'success' | 'error' | 'verify' | 'confirm';
 export interface IModalConfig {
   data:any;
   header: string;
@@ -32,4 +33,31 @@ export interface IModalConfig {
   appendTo:any;
   duplicate:boolean;
 
+}
+
+
+export interface IModalType {
+  type: TypeModal;
+}
+export interface IModalOption {
+  type?: TypeModal;
+  heading?: string;
+  message?: string;
+  messageHTML?: string;
+  btnName?: string; // btn confirm
+  btnNameClose?: string;
+  btnOkName?:string;
+  btnCancleName?:string;
+  showBtnOk?:boolean;
+  notForClose?: boolean; // close by esc/click outside
+  haveIcon?: boolean; // default is true
+  showXBtn?: boolean; // btn close (x) on right corner (default: true)
+  size?: 'sm' | 'lg' | 'xl' | string;
+  accept?: () => void;
+  close?: (result?: any) => void;
+  dismiss?: (reason: any) => void;
+  // close modal opening before open other modal
+  closeOpeningModal?: boolean; // (Use case: confirm pending trans, reopen modal PTXT);
+  iconBtnOk?:string;
+  modalType:any;
 }

@@ -1,5 +1,5 @@
 <div
-  class="h-screen box-border p-3 duration-500 overflow-hidden"
+  class="h-screen box-border p-3 relative duration-500 overflow-hidden"
   [ngClass]="isExpand ? 'w-[300px]' : 'w-[70px]'"
 >
   <div class="w-full text-center flex items-center h-[70px]">
@@ -33,7 +33,7 @@
       </div>
       <ng-container *ngFor="let i of item?.children">
         <div
-          class="group flex items-center hover:bg-gray px-2 h-[40px] rounded-lg cursor-pointer mt-1 duration-300"
+          class="group flex items-center hover:bg-gray px-2 h-[40px] rounded-lg cursor-pointer mt-1 overflow-hidden duration-300"
           routerLink="{{ i?.route }}"
           routerLinkActive="bg-purple-light font-semibold"
           [routerLinkActiveOptions]="{ exact: true }"
@@ -53,9 +53,9 @@
       </ng-container>
     </div>
   </div>
-  <div class="fixed bottom-3 left-3 font-medium cursor-pointer">
+  <div class="absolute bottom-3 left-3 font-medium bg-white w-full">
     <button
-      class="mb-3 w-10 aspect-square rounded-xl center hover:bg-purple-light duration-400"
+      class="mb-3 w-10 aspect-square rounded-xl center hover:bg-purple-light cursor-pointer duration-400"
       (click)="expand()"
     >
       <img
@@ -65,13 +65,13 @@
         alt=""
       />
     </button>
-    <button class="flex items-center gap-x-3 p-2 rounded-xl">
+    <button class="flex items-center gap-x-3 h-12 w-[max-content] p-2 rounded-xl cursor-pointer">
       <img
         src="assets/icons/default/ic-arrow-autofit-left.svg"
         class="w-6"
         alt=""
       />
-      <span *ngIf="isExpand">Đăng xuất</span>
+      <span *ngIf="isExpand" class="">Đăng xuất</span>
     </button>
   </div>
 </div>

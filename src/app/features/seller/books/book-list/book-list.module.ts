@@ -5,6 +5,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { FilterModule } from "src/app/components/filter/filter.module";
 import { PageHeaderModule } from "src/app/components/page-header/page-header.module";
 import { TableUiModule } from "src/app/components/table-ui/table-ui.module";
+import { ButtonModule } from "primeng/button";
 
 const routes:Routes = [
   {
@@ -22,7 +23,8 @@ const routes:Routes = [
     RouterModule.forChild(routes),
     FilterModule,
     PageHeaderModule,
-    TableUiModule
+    TableUiModule,
+    ButtonModule
   ],
   exports: [
     BookListComponent
