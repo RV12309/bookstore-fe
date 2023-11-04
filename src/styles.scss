@@ -68,5 +68,7 @@ p{
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-purple/80
 }
-
+table{
+  display: table !important;
+}
 @import "assets/scss/primeng.scss";
