@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BookListComponent } from './book-list.component';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
+import { BookCreateModule } from '../book-create/book-create.module';
+import { BookListComponent } from './book-list.component';
 
 const routes:Routes = [
   {
@@ -16,7 +17,8 @@ const routes:Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    BookCreateModule
   ],
   exports: [
     BookListComponent
