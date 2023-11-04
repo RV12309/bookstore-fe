@@ -157,3 +157,50 @@ input{
 
   }
 }
+
+// Table
+.p-table{
+  .p-datatable{
+    .p-datatable-wrapper{
+      table .p-datatable-table{
+        thead{
+          display: block;
+          background: red !important;
+        }
+        @apply bg-red-300 rounded-xl ;
+        .p-datatable-thead{
+          @apply py-10;
+        }
+      }
+    }
+  }
+}
+.custom-table {
+  border-collapse: collapse;
+  @apply rounded-xl overflow-hidden border border-solid border-neutral-200;
+}
+
+.custom-table th, .custom-table td {
+  // text-align: center;
+  @apply p-5;
+}
+
+.custom-table th {
+  @apply bg-gray font-bold text-lg;
+}
+
+.custom-table tr:nth-child(even) {
+  @apply bg-gray/20;
+}
+.custom-table tr:hover {
+  @apply bg-gray/50;
+}
+
+// Tooltip
+.p-tooltip{
+  .p-tooltip-text{
+    @apply p-2 rounded-lg bg-neutral-500 m-2;
+  }
+  .p-tooltip-arrow{
+  }
+}
