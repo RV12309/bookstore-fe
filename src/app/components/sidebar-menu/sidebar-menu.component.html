@@ -1,12 +1,20 @@
-<div class="h-screen box-border border-r border-solid border-purple-light p-3 duration-500 overflow-hidden"
+<div
+  class="h-screen box-border p-3 duration-500 overflow-hidden"
   [ngClass]="isExpand ? 'w-[300px]' : 'w-[70px]'"
 >
   <div class="w-full text-center flex items-center h-[70px]">
-    <button class="rounded-xl center aspect-square bg-white hover:bg-purple-light" (click)="expand()">
-      <img src="assets/icons/default/ic-align-justify.svg" class="w-10 h-10" alt="">
-    </button>
+    <!-- <button
+      class="rounded-xl center aspect-square bg-white hover:bg-purple-light"
+      (click)="expand()"
+    >
+      <img
+        src="assets/icons/default/ic-align-justify.svg"
+        class="w-10 h-10"
+        alt=""
+      />
+    </button> -->
     <!-- <img src="assets/images/logo.png" class="w-20 h-20" alt="" *ngIf="isExpand"> -->
-    <span *ngIf="isExpand" class="font-second text-4xl ml-1 heartbeat">eFinBooks</span>
+    <!-- <span *ngIf="isExpand" class="font-second text-4xl ml-1 heartbeat">eFinBooks</span> -->
   </div>
   <!-- menu -->
 
@@ -15,25 +23,55 @@
       *ngFor="let item of menuList"
       class="border-t border-solid border-purple-light mt-8 pt-6"
     >
-    <div class="h-[31.5px]">
-      <p *ngIf="isExpand" class="font-bold text-lg mb-2 slide-in-blurred-left ">{{item?.label}}</p>
+      <div class="h-[31.5px]">
+        <p
+          *ngIf="isExpand"
+          class="font-medium text-lg mb-2 slide-in-blurred-left"
+        >
+          {{ item?.label }}
+        </p>
+      </div>
+      <ng-container *ngFor="let i of item?.children">
+        <div
+          class="group flex items-center hover:bg-gray px-2 h-[40px] rounded-lg cursor-pointer mt-1 duration-300"
+          routerLink="{{ i?.route }}"
+          routerLinkActive="bg-purple-light font-semibold"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <img
+            [src]="'assets/icons/default/' + i?.icon"
+            class="w-6"
+            alt=""
+          />
+          <p
+            *ngIf="isExpand"
+            class="ml-3 slide-in-blurred-right"
+          >
+            {{ i?.title }}
+          </p>
+        </div>
+      </ng-container>
     </div>
-    <ng-container
-      *ngFor="let i of item?.children"
+  </div>
+  <div class="fixed bottom-3 left-3 font-medium cursor-pointer">
+    <button
+      class="mb-3 w-10 aspect-square rounded-xl center hover:bg-purple-light duration-400"
+      (click)="expand()"
     >
-    <div
-      class="group flex items-center hover:bg-gray px-2 h-[40px] rounded-lg cursor-pointer mt-1 duration-300"
-      routerLink="{{i?.route}}"
-      routerLinkActive="bg-purple-light font-semibold"
-      [routerLinkActiveOptions]="{exact: true}"
-    >
-      <img [src]="'assets/icons/default/'+i?.icon" class="w-6" alt="">
-      <p *ngIf="isExpand" class="ml-3 slide-in-blurred-right">{{i?.title}}</p>
-    </div>
-    </ng-container>
-
-
-    </div>
-
+      <img
+        src="assets/icons/default/ic-chevron-back-outline.svg"
+        class="duration-400"
+        [ngClass]="isExpand ? '' : 'rotate-180'"
+        alt=""
+      />
+    </button>
+    <button class="flex items-center gap-x-3 p-2 rounded-xl">
+      <img
+        src="assets/icons/default/ic-arrow-autofit-left.svg"
+        class="w-6"
+        alt=""
+      />
+      <span *ngIf="isExpand">Đăng xuất</span>
+    </button>
   </div>
 </div>

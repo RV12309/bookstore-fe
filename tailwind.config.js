@@ -33,6 +33,9 @@ module.exports = {
       },
       fontFamily: {
         'second': ['Grandstander'],
+      },
+      transitionDuration: {
+        '400': '400ms',
       }
 
     },
