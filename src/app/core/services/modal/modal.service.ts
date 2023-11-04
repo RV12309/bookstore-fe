@@ -1,7 +1,8 @@
-import { Injectable, Type } from '@angular/core';
+import { ComponentRef, Injectable, Type } from '@angular/core';
 import { Observable, Subject } from "rxjs";
-import { DialogService, DynamicDialogRef } from "primeng/dynamicdialog";
+import { DialogService, DynamicDialogConfig, DynamicDialogRef } from "primeng/dynamicdialog";
 import { ModalNoticeComponent } from "./modal-notice.component";
+import { IModalConfig } from "../../interfaces";
 
 
 @Injectable({
@@ -9,10 +10,28 @@ import { ModalNoticeComponent } from "./modal-notice.component";
 })
 export class ModalService {
   private onCloseSubject = new Subject<any>();
+  private onClose = new Subject<any>;
   private ref: DynamicDialogRef | undefined;
   constructor(private dialogService: DialogService) { }
 
-  open(component: any, options: any = {}): Observable<any> {
+
+
+  open(
+    component:Type<any>,
+    config:Partial<IModalConfig> | DynamicDialogConfig<any>
+  ):Observable<any>{
+    this.dialogService.open(
+      component,
+      config
+    ).onClose.subscribe(data => {
+      this.onClose.next(data)
+    });
+    return this.onClose.asObservable();
+  }
+
+
+
+  openT(component: any, options: any = {}): Observable<any> {
     const ref = this.dialogService.open(component, {
       header: options.header || 'Modal Dialog',
       width: options.width || '70%',
@@ -53,7 +72,7 @@ export class ModalService {
     }
     const sizeModal = size || 'xs';
     const className = "ant-modal-alert ant-modal-" + sizeModal;
-    return this.open({
+    return this.openT({
       nzContent: modalComponent,
       nzFooter: null,
       nzCentered: true,
@@ -68,4 +87,8 @@ export class ModalService {
     this.ref?.destroy();
     this.onCloseSubject.next(result);
   }
+}
+
+const MODAL_CONFIG_DEFAULT:Partial<IModalConfig> = {
+
 }
