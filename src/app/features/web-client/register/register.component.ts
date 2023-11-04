@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private route: Router
+    private router: Router
   ){
     this.registerForm = this.fb.group({
       username: [null, Validators.required],
@@ -34,14 +34,14 @@ export class RegisterComponent implements OnInit{
     this.authService.register(this.registerForm?.value).subscribe(
       (res => {
         if(res?.code === '00') {
-          this.route.navigate(['/register/verify'])
+          this.router.navigate(['/auth/register/verify'])
         }
       })
     )
   }
 
   back(){
-    this.route.navigate(['/']);
+    this.router.navigate(['/']);
   }
 
   get usernameControl(): FormControl {
