@@ -177,7 +177,14 @@ input{
 }
 .custom-table {
   border-collapse: collapse;
-  @apply rounded-xl overflow-hidden border border-solid border-neutral-200;
+  @apply rounded-xl border border-solid border-neutral-200;
+  .p-paginator{
+    @apply mt-5 mb-3;
+  }
+}
+
+.custom-table .p-datatable-wrapper {
+  @apply rounded-t-xl overflow-hidden;
 }
 
 .custom-table th, .custom-table td {
@@ -186,7 +193,7 @@ input{
 }
 
 .custom-table th {
-  @apply bg-gray font-bold text-lg;
+  @apply bg-gray font-semibold text-base;
 }
 
 .custom-table tr:nth-child(even) {
@@ -246,6 +253,21 @@ input{
       th, td{
         @apply p-5
       }
+    }
+  }
+}
+
+.p-checkbox  {
+  .p-checkbox-box{
+    @apply border border-solid border-purple rounded-lg;
+    &:hover{
+      @apply bg-purple-light;
+    }
+  }
+  .p-checkbox-box.p-highlight{
+    @apply bg-purple box-border shadow-none;
+    &:focus{
+      @apply shadow-none;
     }
   }
 }

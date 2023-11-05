@@ -5,6 +5,8 @@ import { TableModule } from 'primeng/table';
 import { CardModule } from "primeng/card";
 import { ButtonModule } from "primeng/button";
 import { TooltipModule } from 'primeng/tooltip';
+import { CheckboxModule } from 'primeng/checkbox';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,7 +17,10 @@ import { TooltipModule } from 'primeng/tooltip';
     TableModule,
     CardModule,
     ButtonModule,
-    TooltipModule
+    TooltipModule,
+    CheckboxModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     TableUiComponent

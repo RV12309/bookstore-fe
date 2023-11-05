@@ -1,7 +1,7 @@
 export interface IFilterItem<T>{
   //--------------input text----------------
   label?: string;
-  name: string;
+  name?: string;
   placeholder?: string;
   type: InputType;
   prefixInput?: string;
@@ -55,6 +55,7 @@ export interface IFilterItem<T>{
   hideControl?: boolean;
 
   icon?:string;
+  controlName:string;
 }
 
 export enum InputType {

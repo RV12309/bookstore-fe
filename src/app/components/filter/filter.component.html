@@ -7,7 +7,7 @@
       ></ng-container>
     </ng-container>
   </div>
-  <div class="w-full flex gap-x-3 justify-center mt-5">
+  <div class="w-full flex gap-x-3 justify-end mt-5">
     <p-button label="Tìm kiếm"></p-button>
     <p-button label="Khôi phục" severity="danger"></p-button>
   </div>
@@ -38,7 +38,9 @@
   <ng-container *ngIf="item?.type === InputType.DatePicker">
     <div>
       <label>{{item?.label}}</label>
-      <app-date-ui></app-date-ui>
+      <app-date-ui
+        [placeholder]="item?.placeholder"
+      ></app-date-ui>
     </div>
   </ng-container>
 </ng-template>

@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class DateUiComponent {
   @Input() showButtonBar = false;
   @Input() dateMode:"multiple" | "range" | "single" = "single";
+  @Input() placeholder = "";
 }

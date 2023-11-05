@@ -4,7 +4,7 @@ export interface IBookSearchForm {
     categoryId?: number,
     page?: number,
     size?: number,
-    sort?: string[],
+    sort?: string[] | any,
     priceFrom?: number,
     priceTo?: number
 }
