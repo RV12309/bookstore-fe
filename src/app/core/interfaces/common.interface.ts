@@ -11,3 +11,8 @@ export interface IMenuSidebarChild {
   key?: string;
   route?: string;
 }
+
+export interface ISelectItem {
+  name: string;
+  code: string;
+}

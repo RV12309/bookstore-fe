@@ -6,6 +6,7 @@ import { DirectivesModule } from 'src/app/core/directives/directives.module';
 import { ActivateAccountComponent } from './activate-account/activate-account.component';
 import { RegisterComponent } from './register.component';
 import { SidebarModule } from 'primeng/sidebar';
+import { InputTextModule } from "primeng/inputtext";
 
 const routes:Routes = [
   {
@@ -26,7 +27,8 @@ const routes:Routes = [
     FormsModule,
     ReactiveFormsModule,
     DirectivesModule,
-    SidebarModule
+    SidebarModule,
+    InputTextModule
   ]
 })
 export class RegisterModule { }

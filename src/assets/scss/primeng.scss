@@ -52,14 +52,14 @@
 
 // Button primeNg
 .p-button{
-  @apply font-medium bg-purple ring-purple focus:shadow-none duration-300 rounded-xl text-white #{!important};
+  @apply font-medium bg-purple ring-purple focus:shadow-none text-center mx-auto center duration-300 rounded-xl text-white #{!important};
   &:hover{
     @apply ring-2 ring-offset-1 ring-purple;
   }
 }
 
 .p-button-secondary{
-  @apply bg-brown ring-brown focus:shadow-none  duration-300 #{!important};
+  @apply bg-brown ring-brown focus:shadow-none duration-300 #{!important};
   &:hover{
     @apply ring-2 ring-offset-1 ring-brown;
   }
@@ -110,7 +110,7 @@
 
 // Input
 input{
-  @apply border border-solid border-purple/50 focus:border-purple rounded-xl duration-300 shadow-none #{!important};
+  @apply border border-solid border-purple/50 focus:border-purple rounded-xl duration-300 #{!important};
 }
 
 // Dropdown
@@ -155,5 +155,119 @@ input{
       }
     }
 
+  }
+}
+
+// Table
+.p-table{
+  .p-datatable{
+    .p-datatable-wrapper{
+      table .p-datatable-table{
+        thead{
+          display: block;
+          background: red !important;
+        }
+        @apply bg-red-300 rounded-xl ;
+        .p-datatable-thead{
+          @apply py-10;
+        }
+      }
+    }
+  }
+}
+.custom-table {
+  border-collapse: collapse;
+  @apply rounded-xl border border-solid border-neutral-200;
+  .p-paginator{
+    @apply mt-5 mb-3;
+  }
+}
+
+.custom-table .p-datatable-wrapper {
+  @apply rounded-t-xl overflow-hidden;
+}
+
+.custom-table th, .custom-table td {
+  // text-align: center;
+  @apply p-5;
+}
+
+.custom-table th {
+  @apply bg-gray font-semibold text-base;
+}
+
+.custom-table tr:nth-child(even) {
+  @apply bg-gray/20;
+}
+.custom-table tr:hover {
+  @apply bg-gray/50;
+}
+
+// Tooltip
+.p-tooltip{
+  .p-tooltip-text{
+    @apply p-2 rounded-lg bg-neutral-500 m-2;
+  }
+  .p-tooltip-arrow{
+  }
+}
+
+// Dialog
+.p-dialog {
+  // background-color: #00000066;
+  // padding: 20px;
+  @apply outline-none border-none rounded-xl bg-white shadow-none;
+  .p-dialog-header{
+    @apply p-3 rounded-t-xl;
+    .p-dialog-header-icons{
+      @apply w-10 aspect-square bg-gray center hover:ring-1 ring-neutral-400 ring-offset-2 duration-400 rounded-xl;
+    }
+    .p-dialog-title{
+      @apply font-semibold text-xl;
+    }
+  }
+  .p-dialog-content{
+    @apply rounded-xl p-3;
+  }
+}
+
+
+// Calendar
+.p-calendar{
+  .p-datepicker{
+    @apply rounded-xl;
+    .p-datepicker-group-container{
+      @apply rounded-xl p-2;
+      .p-datepicker-group{
+        // @apply rounded-xl overflow-hidden;
+        .p-datepicker-header{
+          @apply rounded-t-xl;
+        }
+      }
+
+    }
+  }
+  .p-datepicker-calendar{
+    @apply p-2;
+    table{
+      th, td{
+        @apply p-5
+      }
+    }
+  }
+}
+
+.p-checkbox  {
+  .p-checkbox-box{
+    @apply border border-solid border-purple rounded-lg;
+    &:hover{
+      @apply bg-purple-light;
+    }
+  }
+  .p-checkbox-box.p-highlight{
+    @apply bg-purple box-border shadow-none;
+    &:focus{
+      @apply shadow-none;
+    }
   }
 }

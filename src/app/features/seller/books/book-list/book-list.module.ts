@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
+import { ButtonModule } from "primeng/button";
+import { FilterModule } from "src/app/components/filter/filter.module";
+import { PageHeaderModule } from "src/app/components/page-header/page-header.module";
+import { TableUiModule } from "src/app/components/table-ui/table-ui.module";
 import { BookCreateModule } from '../book-create/book-create.module';
 import { BookListComponent } from './book-list.component';
 
@@ -19,6 +23,10 @@ const routes:Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     BookCreateModule
+    FilterModule,
+    PageHeaderModule,
+    TableUiModule,
+    ButtonModule
   ],
   exports: [
     BookListComponent

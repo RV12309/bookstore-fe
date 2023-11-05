@@ -37,10 +37,16 @@ button {
   font-family: 'Inter', sans-serif;
   outline: none;
   border: none;
-  @apply cursor-pointer;
 }
+
 p{
   line-height: 1.3;
+}
+
+label{
+  display: inline-block;
+  font-weight: 500;
+  margin-bottom: 3px !important;
 }
 
 .error-text{
@@ -68,5 +74,7 @@ p{
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-purple/80
 }
-
+table{
+  display: table !important;
+}
 @import "assets/scss/primeng.scss";

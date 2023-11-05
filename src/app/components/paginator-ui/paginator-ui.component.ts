@@ -22,6 +22,6 @@ export class PaginatorUiComponent implements OnInit{
   }
 
   onPageChange(event:any){
-    this.pageChange.emit(event);
+    this.pageChange?.emit(event);
   }
 }
