@@ -16,11 +16,16 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('src/app/core/layouts/web-client/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule)
+    loadChildren: () => import('src/app/core/layouts/web-client/auth-layout/auth-layout.module').then(m => m.AuthLayoutModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'seller',
     loadChildren: () => import('src/app/core/layouts/seller/seller-layout/seller-layout.module').then(m => m.SellerLayoutModule)
+  },
+  {
+    path: 'components',
+    loadChildren: () => import('src/app/components/components.module').then(m => m.ComponentsModule)
   },
   {
     path: '**',

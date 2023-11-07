@@ -1,10 +1,10 @@
-import { PositionModal } from "../enums";
+import { ModalSize, PositionModal } from "../enums";
 
 export type TypeModal = 'info' | 'delete' | 'success' | 'error' | 'verify' | 'confirm';
 export interface IModalConfig {
   data:any;
   header: string;
-  width: string;
+  width: ModalSize | string;
   height:string;
   contentStyle: Object;
   baseZIndex: number; //Base zIndex value to use in layering

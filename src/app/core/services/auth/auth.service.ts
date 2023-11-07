@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { jwtDecode } from "jwt-decode";
 import { Observable } from 'rxjs';
 import { WCEndPoint, env } from 'src/app/core/enums/wc-endpoints.enums';
-import { IJWTResponse, ILogin, ILoginForm, IRegisterForm, IVerifyForm } from 'src/app/core/interfaces/auth.interface';
+import { IAccount, IJWTResponse, ILogin, ILoginForm, IRegisterForm, IRole, IVerifyForm } from 'src/app/core/interfaces/auth.interface';
 import { StoreService } from "../store.service";
 import { JWTStorageKey, StorageKey } from "../../enums";
 
@@ -32,7 +32,7 @@ export class AuthService {
     return jwtDecode(accessToken);
   }
 
-  getDataByKey(key:JWTStorageKey){
+  getDataByKey(key:JWTStorageKey):any{
     const data:IJWTResponse = this.decodeToken();
     return data[key];
   }

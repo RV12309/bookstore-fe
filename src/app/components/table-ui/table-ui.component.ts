@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
 import { ITitleTable } from "src/app/core/interfaces/table.interface";
 
 @Component({
@@ -6,18 +6,31 @@ import { ITitleTable } from "src/app/core/interfaces/table.interface";
   templateUrl: './table-ui.component.html',
   styleUrls: ['./table-ui.component.scss']
 })
-export class TableUiComponent {
+export class TableUiComponent implements OnInit{
+
+  @ContentChild('tableBody', { static: false }) tableBody!: TemplateRef<any>;
+  @ContentChild('tableAction', { static: false }) tableAction!: TemplateRef<any>;
+
   @Input() headerTable = '';
   @Input() total = 0;
   @Input() isRefresh = true;
   @Input() paginator = true;
-  @Input() dataTable = [];
+  @Input() dataTable:any[] = [];
   @Input() rows = 5;
   @Input() rowsPerPageOptions = [5, 10, 20];
   @Input() currentPageReportTemplate = "";
   @Input() showCurrentPageReport = false;
   @Input() titleTable:ITitleTable[] = [];
   @Input() checkbox = true;
+  @Input() isSearch = false;
+  @Input() placeholderSearch = "Tìm kiếm";
+  @Input() showAction = false;
+  @Input() actionWidth = ''
+
+  @Output() searchChange = new EventEmitter<string>();
+  @Output() refreshData = new EventEmitter<any>();
+
+
   checked: boolean = false;
 
   public products = [
@@ -46,4 +59,12 @@ export class TableUiComponent {
       rating: 5
     }
   ]
+
+  ngOnInit(): void {
+
+  }
+
+  searchTableChange(event:any){
+    this.searchChange.emit(event?.target?.value)
+  }
 }

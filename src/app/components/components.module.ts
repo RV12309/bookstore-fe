@@ -5,6 +5,16 @@ import { CardModule } from 'primeng/card';
 import { PaginatorUiModule } from "./paginator-ui";
 import { DropdownUiModule } from "./dropdown-ui/dropdown-ui.module";
 import { InputTextUiModule } from "./input-text-ui/input-text-ui.module";
+import { RouterModule, Routes } from "@angular/router";
+import { ButtonModule } from "primeng/button";
+import { FileUploadModule } from 'primeng/fileupload';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: ComponentsComponent
+  }
+]
 
 @NgModule({
   declarations: [
@@ -15,7 +25,10 @@ import { InputTextUiModule } from "./input-text-ui/input-text-ui.module";
     CardModule,
     PaginatorUiModule,
     DropdownUiModule,
-    InputTextUiModule
+    InputTextUiModule,
+    RouterModule.forChild(routes),
+    ButtonModule,
+    FileUploadModule
   ]
 })
 export class ComponentsModule { }

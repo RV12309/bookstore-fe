@@ -1,21 +1,23 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Cloudinary } from "@cloudinary/url-gen";
-import { CLOUD_NAME } from "../constants/common.constant";
+import { API_KEY, CLOUD_NAME } from "../constant/common.constant";
+import { CloudinaryValue } from "../enums";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadService {
-  private apiUrl = 'https://freeimage.host/api/1/upload/?key=6399';
+  private apiUrl = `https://api.cloudinary.com/v1_1/${CloudinaryValue.CloudName}/image/upload`;
 
   constructor(private http:HttpClient) { }
 
 
   uploadImage(file: File) {
     const formData = new FormData();
-    formData.append('source', 'angular-app'); // Optional, you can change this as needed
     formData.append('file', file);
+    formData.append('upload_preset', CloudinaryValue.UploadPreset); // Optional, you can change this as needed
+    formData.append('api_key', CloudinaryValue.ApiKey)
     return this.http.post(this.apiUrl, formData);
   }
 

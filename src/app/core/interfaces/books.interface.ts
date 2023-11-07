@@ -34,3 +34,18 @@ export interface IBookData  {
     price?: number,
     quantity?: number
   }
+
+export interface IBookCreate {
+  title: string;
+  author: string;
+  description: string;
+  categoryIds: number[];
+  imagesUrls: string[];
+  urlThumbnail: string;
+  urlImageCover: string;
+  publisher: string;
+  publishDate: string;
+  numberOfPages: number;
+  price: number;
+  quantity: number;
+}

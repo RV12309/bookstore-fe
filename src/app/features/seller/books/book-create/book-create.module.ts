@@ -3,6 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BookCreateComponent } from './book-create.component';
+import { InputTextModule } from "primeng/inputtext";
+import { ButtonModule } from "primeng/button";
+import { BaseUploadModule } from "src/app/components/base-upload/base-upload.module";
+import { DividerModule } from 'primeng/divider';
+import { DropdownUiModule } from "src/app/components/dropdown-ui/dropdown-ui.module";
+import { DateUiModule } from "src/app/components/date-ui/date-ui.module";
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 
@@ -14,7 +21,17 @@ import { BookCreateComponent } from './book-create.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
-  ]
+    RouterModule,
+    InputTextModule,
+    ButtonModule,
+    BaseUploadModule,
+    DividerModule,
+    DropdownUiModule,
+    DateUiModule,
+    InputNumberModule
+  ],
+  exports: [
+    BookCreateComponent
+  ],
 })
 export class BookCreateModule { }

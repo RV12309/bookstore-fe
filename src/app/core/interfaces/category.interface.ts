@@ -1,4 +1,4 @@
-export interface ICategoryResponse {
+export interface ICategoryData {
     id?: number,
     code: string,
     name: string,
@@ -8,4 +8,10 @@ export interface ICategoryResponse {
 export interface ICategoryForm {
     name?: string,
     description?: string
+}
+
+export interface ICategorySearch {
+  name?: string;
+  page: number;
+  size: number;
 }

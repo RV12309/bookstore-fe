@@ -13,7 +13,7 @@ export const routes:Routes = [
       },
       {
         path:'books/categories',
-        component: HomeComponent
+        loadChildren: () => import('src/app/features/seller/categories/categories-list/categories-list.module').then(m => m.CategoriesListModule)
       },
       {
         path: 'order',
@@ -22,6 +22,11 @@ export const routes:Routes = [
       {
         path: 'statistics',
         component : HomeComponent
+      },
+      {
+        path: '',
+        redirectTo: 'books',
+        pathMatch: 'full'
       }
     ]
   }

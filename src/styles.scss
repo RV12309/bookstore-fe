@@ -20,11 +20,6 @@ html {
   font-size: 14px;
 }
 
-
-.p-button {
-  @apply rounded-lg;
-}
-
 input, textarea {
   outline: none;
   font-family: 'Inter', sans-serif;
@@ -46,7 +41,7 @@ p{
 label{
   display: inline-block;
   font-weight: 500;
-  margin-bottom: 3px !important;
+  margin-bottom: 6px !important;
 }
 
 .error-text{

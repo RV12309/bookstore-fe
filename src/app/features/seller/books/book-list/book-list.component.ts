@@ -3,6 +3,8 @@ import { IFilterItem, InputType } from "src/app/core/interfaces";
 import { ITitleTable } from "src/app/core/interfaces/table.interface";
 import { BooksService } from "src/app/core/services/books/books.service";
 import { ModalService } from 'src/app/core/services/modal';
+import { BookCreateComponent } from "../book-create/book-create.component";
+import { ModalSize } from "src/app/core/enums";
 
 @Component({
   selector: 'app-book-list',
@@ -71,13 +73,20 @@ export class BookListComponent implements OnInit{
   }
 
   create(){
-    this.modalService.alert(
+    this.modalService.open(
+      BookCreateComponent,
       {
-        message: 'Bạn xác nhận tạo sách ?',
-        accept: () => {
-          console.log('Đã accept')
-        }
+        header: 'Tạo mới sách',
+        width: ModalSize.Large
       }
     )
+    // this.modalService.alert(
+    //   {
+    //     message: 'Bạn xác nhận tạo sách ?',
+    //     accept: () => {
+    //       console.log('Đã accept')
+    //     }
+    //   }
+    // )
   }
 }

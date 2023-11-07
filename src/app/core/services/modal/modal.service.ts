@@ -5,6 +5,7 @@ import { ModalNoticeComponent } from "./modal-notice.component";
 import { IModalConfig, IModalOption } from "../../interfaces";
 import { ModalConfirmComponent } from "src/app/components/modal-confirm/modal-confirm.component";
 import { ModalAlertComponent } from "src/app/components/modal-alert/modal-alert.component";
+import { ModalSize } from "../../enums";
 
 
 @Injectable({
@@ -22,7 +23,10 @@ export class ModalService {
   ):DynamicDialogRef{
     return this.dialogService.open(
       component,
-      config
+      {
+        ...MODAL_CONFIG_DEFAULT,
+        ...config
+      }
     )
   }
 
@@ -58,59 +62,6 @@ export class ModalService {
     )
   }
 
-
-  // openT(component: any, options: any = {}): Observable<any> {
-  //   const ref = this.dialogService.open(component, {
-  //     header: options.header || 'Modal Dialog',
-  //     width: options.width || '70%',
-  //     contentStyle: { 'max-height': '500px', 'overflow': 'auto' },
-  //     closeOnEscape: options.closeOnEscape !== undefined ? options.closeOnEscape : true,
-  //     baseZIndex: 10000
-  //   });
-
-  //   ref.onClose.subscribe(result => {
-  //     this.onCloseSubject.next(result);
-  //   });
-
-  //   return this.onCloseSubject.asObservable();
-  // }
-
-  // alert(params: Partial<any> | string) {
-  //   let modalParams: any = {}
-  //   let type: any = 'error';
-  //   if (typeof params === 'string') {
-  //     modalParams = {
-  //       message: params,
-  //     }
-  //   } else {
-  //     modalParams = params;
-  //     // type = params?.type;
-  //   }
-
-  //   return this.handleModal(ModalNoticeComponent, modalParams, type);
-  // }
-
-  // public handleModal<C>(modalComponent: Type<C>, params: any, type: 'delete' | 'success' | 'error' | 'verify' | 'confirm' | 'warning' | 'info', size?: string,) {
-  //   const modalOptions = {
-  //     heading: 'modal.thong_bao',
-  //     btnOkName: 'modal.dong_y',
-  //     btnCancleName: 'modal.dong',
-  //     // modalType: ModalType[type],
-  //     ...params
-  //   }
-  //   const sizeModal = size || 'xs';
-  //   const className = "ant-modal-alert ant-modal-" + sizeModal;
-  //   return this.openT({
-  //     nzContent: modalComponent,
-  //     nzFooter: null,
-  //     nzCentered: true,
-  //     nzClosable: false,
-  //     nzComponentParams: modalOptions,
-  //     nzClassName: className,
-  //     nzMaskClosable: false
-  //   })
-  // }
-
   close(result?: any) {
     this.ref?.destroy();
     this.onCloseSubject.next(result);
@@ -118,7 +69,7 @@ export class ModalService {
 }
 
 const MODAL_CONFIG_DEFAULT:Partial<IModalConfig> = {
-
+  width: ModalSize.Default
 }
 
 export const ModalType = {

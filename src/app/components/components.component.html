@@ -1,4 +1,4 @@
-<div class="p-10 min-h-screen bg-purple-light flex flex-col gap-y-3">
+<div class="p-10 min-h-screen bg-purple-light flex flex-col gap-y-5">
   <p-card header="Paginator">
     <div>
       <app-paginator-ui></app-paginator-ui>
@@ -14,5 +14,56 @@
     <div>
       <app-input-text-ui></app-input-text-ui>
     </div>
+  </p-card>
+
+  <p-card header="Button">
+    <div class="mt-3">
+      <div class="card flex flex-wrap gap-3 justify-content-center">
+        <p-button label="Primary" ></p-button>
+        <p-button label="Secondary" [raised]="true" severity="secondary"></p-button>
+        <p-button label="Success" [raised]="true" severity="success"></p-button>
+        <p-button label="Info" [raised]="true" severity="info"></p-button>
+        <p-button label="Warning" [raised]="true" severity="warning"></p-button>
+        <p-button label="Help" [raised]="true" severity="help"></p-button>
+        <p-button label="Danger" [raised]="true" severity="danger"></p-button>
+      </div>
+      <div class="card flex flex-wrap gap-3 justify-content-center mt-5">
+        <p-button label="Primary" [outlined]="true"></p-button>
+        <p-button label="Secondary" [outlined]="true" severity="secondary"></p-button>
+        <p-button label="Success" [outlined]="true" severity="success"></p-button>
+        <p-button label="Info" [outlined]="true" severity="info"></p-button>
+        <p-button label="Warning" [outlined]="true" severity="warning"></p-button>
+        <p-button label="Help" [outlined]="true" severity="help"></p-button>
+        <p-button label="Danger" [outlined]="true" severity="danger"></p-button>
+      </div>
+      <div class="mt-5 card flex flex-wrap gap-3 justify-content-center">
+        <p-button label="Primary" [rounded]="true"></p-button>
+        <p-button label="Secondary" [rounded]="true" severity="secondary"></p-button>
+        <p-button label="Success" [rounded]="true" severity="success"></p-button>
+        <p-button label="Info" [rounded]="true" severity="info"></p-button>
+        <p-button label="Warning" [rounded]="true" severity="warning"></p-button>
+        <p-button label="Help" [rounded]="true" severity="help"></p-button>
+        <p-button label="Danger" [rounded]="true" severity="danger"></p-button>
+      </div>
+      <div class="mt-5 card flex justify-content-center gap-x-3">
+        <p-button label="Emails" badge="8"></p-button>
+        <p-button label="Messages" icon="pi pi-users" severity="warning" badge="8" badgeClass="p-badge-danger"></p-button>
+      </div>
+    </div>
+  </p-card>
+  <p-card header="upload">
+    <!-- <p-fileUpload
+      name="demo[]"
+      url="https://www.primefaces.org/cdn/api/upload.php"
+      (onUpload)="onUpload($event)"
+      [multiple]="true" accept="image/*"
+      [maxFileSize]="1000000"
+    >
+      <ng-template pTemplate="content">
+        <ul *ngIf="uploadedFiles.length">
+          <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+        </ul>
+      </ng-template>
+    </p-fileUpload> -->
   </p-card>
 </div>

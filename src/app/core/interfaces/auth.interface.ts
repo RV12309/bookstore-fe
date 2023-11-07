@@ -28,7 +28,7 @@ export interface IJWTResponse {
   exp: number;
 }
 
-interface IAccount {
+export interface IAccount {
   isDeleted: boolean;
   createdBy: string;
   updatedBy: string;
@@ -46,6 +46,6 @@ interface IAccount {
   verificationExpiredAt?: any;
 }
 
-interface IRole {
+export interface IRole {
   authority: string;
 }

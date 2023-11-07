@@ -3,6 +3,7 @@ import { MessageService } from "primeng/api";
 import { Subscription, fromEvent, map, merge, of } from "rxjs";
 import { StoreService } from "./core/services";
 import { StorageKey } from "./core/enums";
+import { Cloudinary } from "@cloudinary/url-gen";
 
 @Component({
   selector: "app-root",
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.isOnline = this.storeService.getSession(StorageKey.isOnl);
+    const cld = new Cloudinary({cloud: {cloudName: 'dobuq8yjd'}});
   }
 
   ngAfterViewInit(): void {
