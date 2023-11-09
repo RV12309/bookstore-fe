@@ -10,6 +10,7 @@ import { AvatarModule } from 'primeng/avatar';
 import { BreadcrumbUiModule } from "src/app/components/breadcrumb-ui/breadcrumb-ui.module";
 import { MenuModule } from 'primeng/menu';
 import { BadgeModule } from 'primeng/badge';
+import { LoadingModule } from "src/app/components/loading/loading.module";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BadgeModule } from 'primeng/badge';
     AvatarModule,
     BreadcrumbUiModule,
     MenuModule,
-    BadgeModule
+    BadgeModule,
+    LoadingModule
   ]
 })
 export class SellerLayoutModule { }

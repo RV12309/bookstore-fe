@@ -30,12 +30,19 @@
     </div>
   </div>
   <p-table
-    [value]="[]"
     styleClass="custom-table"
+    [value]="dataTable || dataTableSkeleton"
     [rows]="rowsPerPageOptions[0]"
     [paginator]="paginator"
     [rowsPerPageOptions]="rowsPerPageOptions"
     [showCurrentPageReport]="showCurrentPageReport"
+    [scrollable]="scrollable"
+    [scrollHeight]="scrollHeight"
+    [showFirstLastIcon]="showFirstLastIcon"
+    [dataKey]="dataKey"
+    (onPage)="pageChange($event)"
+    (firstChange)="firstTableChange($event)"
+    (rowsChange)="rowsTableChange($event)"
   >
     <ng-template pTemplate="caption">
       <!-- <div class="flex align-items-center justify-content-between">
@@ -49,7 +56,6 @@
           *ngIf="checkbox"
           class="text-center"
         >
-          <!-- <p-tableHeaderCheckbox></p-tableHeaderCheckbox> -->
           <p-checkbox
             [(ngModel)]="checked"
             [binary]="true"
@@ -58,61 +64,56 @@
         </th>
         <th>STT</th>
         <ng-container *ngFor="let header of titleTable">
-          <th>
+          <th [pSortableColumn]="header?.sort ? header?.key : ''">
             {{ header?.title }}
+            <ng-container *ngIf="header?.sort">
+              <p-sortIcon field="name"></p-sortIcon>
+            </ng-container>
           </th>
         </ng-container>
         <th
           *ngIf="showAction"
-          [ngStyle]="{'width': actionWidth || '250px'}"
-        >Hành động</th>
+          [ngStyle]="{ width: actionWidth || '250px' }"
+        >
+          Hành động
+        </th>
       </tr>
     </ng-template>
     <ng-template
       pTemplate="body"
       let-item
       let-rowIndex="rowIndex"
-
     >
-      <ng-container *ngIf="dataTable?.length; then dataTpl else noDataTpl"></ng-container>
-      <ng-template #dataTpl>
-        <tr [pSelectableRow]="item" [pSelectableRowIndex]="rowIndex">
-          <td
-            *ngIf="checkbox"
-            class="text-center"
-          >
-            <!-- <p-tableCheckbox [value]="item"></p-tableCheckbox> -->
-            <p-checkbox
-              [(ngModel)]="checked"
-              [binary]="true"
-              inputId="binary"
-            ></p-checkbox>
-          </td>
-          <td></td>
+      <tr
+        [pSelectableRow]="item"
+        [pSelectableRowIndex]="rowIndex"
+      >
+        <td
+          *ngIf="checkbox"
+          class="text-center"
+        >
+          <!-- <p-tableCheckbox [value]="item"></p-tableCheckbox> -->
+          <p-checkbox
+            [(ngModel)]="checked"
+            [binary]="true"
+            inputId="binary"
+          ></p-checkbox>
+        </td>
+        <td></td>
+        <ng-container
+          [ngTemplateOutlet]="tableBody"
+          [ngTemplateOutletContext]="{ item: item, rowIndex: rowIndex }"
+        ></ng-container>
+        <td
+          *ngIf="showAction"
+          class="flex gap-x-2"
+        >
           <ng-container
-            [ngTemplateOutlet]="tableBody"
-            [ngTemplateOutletContext]="{item: item, rowIndex: rowIndex}"
-          >
-          </ng-container>
-          <td *ngIf="showAction" class="flex gap-x-2">
-            <ng-container
-              [ngTemplateOutlet]="tableAction"
-              [ngTemplateOutletContext]="{item: item, rowIndex: rowIndex}"
-            >
-            </ng-container>
-          </td>
-        </tr>
-      </ng-template>
-      <ng-template #noDataTpl>
-        <tr *ngFor="let item of [1,2,3,4,5]">
-          <td *ngIf="checkbox"><p-skeleton></p-skeleton></td>
-          <td><p-skeleton></p-skeleton></td>
-          <td *ngFor="let i of titleTable"><p-skeleton></p-skeleton></td>
-        </tr>
-      </ng-template>
-
-
-
+            [ngTemplateOutlet]="tableAction"
+            [ngTemplateOutletContext]="{ item: item, rowIndex: rowIndex }"
+          ></ng-container>
+        </td>
+      </tr>
     </ng-template>
   </p-table>
 </p-card>

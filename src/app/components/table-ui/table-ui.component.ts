@@ -1,5 +1,7 @@
 import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
-import { ITitleTable } from "src/app/core/interfaces/table.interface";
+import { TablePageEvent } from "primeng/table";
+import { DATA_KEY } from "src/app/core/constant/common.constant";
+import { ITablePageChange, ITitleTable } from "src/app/core/interfaces/table.interface";
 
 @Component({
   selector: 'app-table-ui',
@@ -17,7 +19,7 @@ export class TableUiComponent implements OnInit{
   @Input() paginator = true;
   @Input() dataTable:any[] = [];
   @Input() rows = 5;
-  @Input() rowsPerPageOptions = [5, 10, 20];
+  @Input() rowsPerPageOptions = [5, 10];
   @Input() currentPageReportTemplate = "";
   @Input() showCurrentPageReport = false;
   @Input() titleTable:ITitleTable[] = [];
@@ -25,10 +27,19 @@ export class TableUiComponent implements OnInit{
   @Input() isSearch = false;
   @Input() placeholderSearch = "Tìm kiếm";
   @Input() showAction = false;
-  @Input() actionWidth = ''
+  @Input() actionWidth = '';
+  @Input() scrollable = true;
+  @Input() scrollHeight = '500px';
+  @Input() showFirstLastIcon = false;
+  @Input() dataKey = DATA_KEY;
+  @Input() sortIcon = '';
+
 
   @Output() searchChange = new EventEmitter<string>();
   @Output() refreshData = new EventEmitter<any>();
+  @Output() onPage = new EventEmitter<any>();
+  @Output() rowsChange = new EventEmitter<any>();
+  @Output() firstChange = new EventEmitter<any>();
 
 
   checked: boolean = false;
@@ -58,7 +69,8 @@ export class TableUiComponent implements OnInit{
       inventoryStatus: 'INSTOCK',
       rating: 5
     }
-  ]
+  ];
+  public dataTableSkeleton = [1,2,3,4,5];
 
   ngOnInit(): void {
 
@@ -66,5 +78,24 @@ export class TableUiComponent implements OnInit{
 
   searchTableChange(event:any){
     this.searchChange.emit(event?.target?.value)
+  }
+
+  pageChange(e:TablePageEvent){
+    console.log(e);
+    const infoPaginator:ITablePageChange = {
+      ...e,
+      pageIndex: e?.first/e?.rows,
+      pageNumber: (e?.first/e?.rows) + 1
+    }
+    console.log(infoPaginator);
+    this.onPage.emit(infoPaginator);
+  }
+
+  rowsTableChange(e:number){
+    this.rowsChange.emit(e);
+  }
+
+  firstTableChange(e:number){
+    this.firstChange.emit(e);
   }
 }

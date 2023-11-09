@@ -252,10 +252,13 @@ p-inputnumber, .p-inputnumber{
   .p-paginator {
     @apply mt-5 mb-3;
   }
+  .p-sortable-column.p-highlight {
+    @apply text-purple #{!important};
+}
 }
 
 .custom-table .p-datatable-wrapper {
-  @apply rounded-t-xl overflow-hidden;
+  @apply rounded-t-xl overflow-scroll;
 }
 
 .custom-table th,
@@ -265,7 +268,7 @@ p-inputnumber, .p-inputnumber{
 }
 
 .custom-table th {
-  @apply bg-gray font-semibold text-base;
+  @apply text-purple bg-gray font-semibold text-base;
 }
 
 .custom-table tr:nth-child(even) {
@@ -274,6 +277,8 @@ p-inputnumber, .p-inputnumber{
 .custom-table tr:hover {
   @apply bg-gray/50;
 }
+
+
 
 // Tooltip
 .p-tooltip {
