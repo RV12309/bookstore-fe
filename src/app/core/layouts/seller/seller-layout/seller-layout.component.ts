@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MenuItem } from "primeng/api";
 import { IMenuSidebar } from "src/app/core/interfaces";
+import { AuthService } from "src/app/core/services/auth/auth.service";
+import { ModalService } from "src/app/core/services/modal";
+import { ModalAccountManagerComponent } from "src/app/features/seller/account/modal-account-manager/modal-account-manager.component";
 
 @Component({
   selector: 'app-seller-layout',
@@ -7,6 +11,8 @@ import { IMenuSidebar } from "src/app/core/interfaces";
   styleUrls: ['./seller-layout.component.scss']
 })
 export class SellerLayoutComponent implements OnInit{
+  @ViewChild('avatar') avatar!:ElementRef;
+
   public menus:IMenuSidebar[] = [
     {
       icon: '',
@@ -14,13 +20,13 @@ export class SellerLayoutComponent implements OnInit{
       route: '',
       children: [
         {
-          icon: 'ic-task-list.svg',
+          icon: 'ic-books-list.svg',
           title: 'Danh sách',
           key: '',
           route: '/seller/books'
         },
         {
-          icon: 'ic-clipboard.svg',
+          icon: 'ic-category.svg',
           title: 'Danh mục',
           key: '',
           route: '/seller/books/categories'
@@ -33,7 +39,7 @@ export class SellerLayoutComponent implements OnInit{
       route: '',
       children: [
         {
-          icon: 'ic-archive.svg',
+          icon: 'ic-order.svg',
           title: 'Danh sách',
           key: '',
           route: '/seller/order'
@@ -46,7 +52,7 @@ export class SellerLayoutComponent implements OnInit{
       route: '',
       children: [
         {
-          icon: 'ic-dices.svg',
+          icon: 'ic-statistics.svg',
           title: 'Số lượng bán',
           key: '',
           route: '/seller/statistics'
@@ -54,12 +60,37 @@ export class SellerLayoutComponent implements OnInit{
       ]
     }
   ]
-  constructor(){
+
+  public items: MenuItem[] | undefined = [];
+  constructor(
+    private authService: AuthService,
+    private modalService: ModalService
+  ){
 
   }
 
   ngOnInit(): void {
-
+    this.items = [
+      {
+        label: 'Quản lý tài khoản',
+        icon: 'ic-account.svg',
+        command: () => {
+          this.modalService.open(
+            ModalAccountManagerComponent,
+            {
+              header: "Quản lý tài khoản"
+            }
+          )
+        }
+    },
+    {
+        label: 'Đăng xuất',
+        icon: 'ic-logout.svg',
+        command: () => {
+          this.authService.logout();
+        }
+    }
+  ];
   }
 
 }

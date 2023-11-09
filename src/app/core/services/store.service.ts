@@ -22,4 +22,20 @@ export class StoreService {
   getLocal(key: StorageKey) {
     return window.localStorage.getItem(key);
   }
+
+  removeSession(key: StorageKey) {
+    window.sessionStorage.removeItem(key);
+  }
+
+  removeLocal(key: StorageKey) {
+    window.localStorage.removeItem(key);
+  }
+
+  clearSession(){
+    window.sessionStorage.clear();
+  }
+
+  clearLocal(){
+    window.localStorage.clear();
+  }
 }

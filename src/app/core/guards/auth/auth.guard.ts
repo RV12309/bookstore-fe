@@ -22,8 +22,6 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean|UrlTree {
     const accessToken = this.storeService.getSession(StorageKey.accessToken);
-    console.log('Vào đây');
-    console.log(this.authService.getDataByKey(JWTStorageKey.role));
     if(accessToken){
       const role:IRole[] = this.authService.getDataByKey(JWTStorageKey.role);
       switch(role[0]?.authority){

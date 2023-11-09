@@ -9,11 +9,17 @@ export const routes:Routes = [
     children: [
       {
         path:'books',
-        loadChildren: () => import('src/app/features/seller/books/book-list/book-list.module').then(m => m.BookListModule)
+        loadChildren: () => import('src/app/features/seller/books/book-list/book-list.module').then(m => m.BookListModule),
+        data: {
+          breadcrumb: "Quản lý sách"
+        }
       },
       {
         path:'books/categories',
-        loadChildren: () => import('src/app/features/seller/categories/categories-list/categories-list.module').then(m => m.CategoriesListModule)
+        loadChildren: () => import('src/app/features/seller/categories/categories-list/categories-list.module').then(m => m.CategoriesListModule),
+        data: {
+          breadcrumb: "Danh mục"
+        }
       },
       {
         path: 'order',

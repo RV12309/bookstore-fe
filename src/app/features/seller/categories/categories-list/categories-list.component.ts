@@ -3,7 +3,7 @@ import { ICategoryData } from "src/app/core/interfaces/category.interface";
 import { ITitleTable } from "src/app/core/interfaces/table.interface";
 import { CategoryService } from "src/app/core/services/category/category.service";
 import { ModalCategoriesCreateComponent } from "../modal-categories-create/modal-categories-create.component";
-import { ModalSize } from "src/app/core/enums";
+import { Action, ModalSize } from "src/app/core/enums";
 import { ModalService } from "src/app/core/services/modal";
 
 @Component({
@@ -36,10 +36,8 @@ export class CategoriesListComponent implements OnInit{
     this.categoryService.getCategoryAll()
     .subscribe({
       next: resp => {
-        console.log(resp);
         this.dataTable = resp.data;
         this.total = this.dataTable?.length
-
       }
     })
   }
@@ -52,30 +50,73 @@ export class CategoriesListComponent implements OnInit{
     ).subscribe({
       next: resp => {
         console.log(resp);
-
+      },
+      error: error => {
+        this.modalService.alert(
+          {
+            type: 'error',
+            message: error?.error?.message || 'Lỗi hệ thống',
+            btnOkName: 'Đóng',
+          }
+        )
       }
     })
   }
 
-  create(){
+  create(header = 'Tạo mới danh mục', action:Action = Action.Create, item?:ICategoryData){
     this.modalService.open(
       ModalCategoriesCreateComponent,
       {
-        header: 'Tạo mới danh mục',
+        header,
+        data: {
+          type: action,
+          item
+        }
       }
-    )
+    ).onClose.subscribe((flag) => {
+      if(flag){
+        this.getAll();
+      }
+    })
   }
 
   view(item:ICategoryData){
-
-    this.modalService.open(
-      ModalCategoriesCreateComponent,
-      {
-        header: 'Chi tiết danh mục',
-      }
-    )
+    this.create( 'Chi tiết danh mục', Action.Detail, item);
   }
 
+  update(item:ICategoryData){
+    this.create( 'Cập nhật danh mục', Action.Update, item);
+  }
+
+  delete(item:ICategoryData){
+    this.modalService.confirm({
+      message: 'Bạn chắc chắn xóa danh mục này?',
+      accept: () => {
+        this.categoryService.delete(item?.id as number)
+        .subscribe({
+          next: () => {
+            this.modalService.alert(
+              {
+                type: 'success',
+                message: 'Xóa thành công',
+              }
+            );
+            this.refreshData();
+          },
+          error: error => {
+            this.modalService.alert(
+              {
+                type: 'error',
+                message: error?.error?.message || 'Lỗi hệ thống',
+                btnOkName: 'Đóng',
+              }
+            )
+          }
+        })
+      }
+    })
+
+  }
   refreshData(){
     this.getAll();
   }

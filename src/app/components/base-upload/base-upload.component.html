@@ -71,11 +71,18 @@
           alt=""
           (click)="removeImage(index)"
         />
-        <img
+        <!-- <img
           [src]="file | imagePreview"
           class="w-full"
           alt=""
-        />
+        /> -->
+        <app-image-ui
+          [src]="file | imagePreview"
+          [imageClass]="'w-full'"
+          [alt]="file?.name"
+          [preview]="true"
+
+        ></app-image-ui>
       </div>
     </div>
   </ng-container>

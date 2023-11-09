@@ -11,3 +11,9 @@ export enum Authority {
   Customer = 'ROLE_CUSTOMER',
   Admin = 'ROLE_ADMIN'
 }
+
+export enum Action {
+  Detail = 'detail',
+  Create = 'create',
+  Update = 'update'
+}

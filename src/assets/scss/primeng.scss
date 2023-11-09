@@ -1,10 +1,17 @@
 // Menu
 .p-menu {
-  @apply p-3;
+  @apply py-3 rounded-xl m-2;
   .p-menu-list {
+    // @apply bg-red-300
+    .p-submenu-header{
+      @apply mb-1 mt-2 font-bold text-purple;
+    }
   }
   .p-menuitem {
-    @apply p-2 hover:bg-purple-light rounded-md flex gap-x-3 duration-300;
+    @apply hover:bg-purple-light flex gap-x-3 duration-300;
+    >*{
+      @apply bg-transparent #{!important};
+    }
     .p-menuitem-text:hover,
     .p-menuitem-icon:hover {
       @apply bg-transparent;
@@ -18,10 +25,13 @@
     a:hover {
       @apply bg-purple-light w-full;
     }
+    .p-menuitem-content{
+      @apply w-full h-full p-3;
+    }
   }
 }
 
-// Paginator primeNg
+// Paginator
 .p-paginator {
   .p-paginator-pages {
     .p-paginator-page {
@@ -33,7 +43,7 @@
   }
 }
 
-// Rating primeNg
+// Rating
 .p-rating {
   .p-rating-star {
   }
@@ -47,7 +57,7 @@
   }
 }
 
-// Button primeNg
+// Button
 .p-button {
   @apply font-medium bg-purple ring-purple focus:shadow-none text-center center duration-300 rounded-xl text-white border border-solid border-purple #{!important};
   &:hover {
@@ -146,7 +156,7 @@
 }
 
 // Input
-input {
+input, .p-inputtextarea {
   @apply w-full border border-solid border-purple/50 focus:border-purple rounded-xl duration-300 #{!important};
 }
 
@@ -174,8 +184,9 @@ input {
 p-inputnumber, .p-inputnumber{
   @apply w-full #{!important};
 }
-// Dropdown
 
+
+// Dropdown
 .p-dropdown {
   @apply h-[38px] rounded-xl border border-solid border-purple;
   input {
@@ -287,7 +298,7 @@ p-inputnumber, .p-inputnumber{
     }
   }
   .p-dialog-content {
-    @apply rounded-xl p-3;
+    @apply rounded-xl p-6;
   }
 }
 
@@ -339,5 +350,34 @@ p-inputnumber, .p-inputnumber{
     .p-fileupload-choose{
       @apply min-h-full px-3 #{!important};
     }
+  }
+}
+
+
+.p-disabled, .p-component:disabled {
+  @apply opacity-100;
+}
+
+
+// Textarea
+// .p-inputtextarea{
+//   @apply w-full rounded-xl border;
+// }
+
+
+// Breadcrumb
+.p-breadcrumb{
+  @apply bg-transparent #{!important};
+  homeicon{
+    @apply hidden;
+  }
+}
+
+.p-image{
+  .p-image-mask{
+    @apply rounded-xl overflow-hidden #{!important};
+  }
+  .p-image-toolbar{
+    @apply absolute top-3 right-3 #{!important};
   }
 }

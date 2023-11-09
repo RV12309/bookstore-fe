@@ -77,6 +77,10 @@ export class BaseUploadComponent implements OnInit {
     // })
   }
 
+  uploadImage(){
+    return;
+  }
+
   removeImage(index: number) {
     this.uploadedFiles?.splice(index, 1);
     console.log(this.uploadedFiles, this.uploadedFiles.length);

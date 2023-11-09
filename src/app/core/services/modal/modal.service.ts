@@ -41,6 +41,7 @@ export class ModalService {
       {
         data: paramsData,
         width,
+        showHeader: false,
         ...configData
       }
     )
@@ -48,15 +49,16 @@ export class ModalService {
 
   alert(data:Partial<IModalOption>, configData?:Object, width = '350px'){
     const paramsData:Partial<IModalOption> = {
+      ...data,
       type: 'info',
-      modalType: ModalType['info'],
-      ...data
+      modalType: ModalType[data?.type || 'info'],
     }
     this.open(
       ModalAlertComponent,
       {
         data: paramsData,
         width,
+        showHeader: false,
         ...configData
       }
     )
@@ -75,7 +77,7 @@ const MODAL_CONFIG_DEFAULT:Partial<IModalConfig> = {
 export const ModalType = {
   'confirm': {
     type: '',
-    iconUrl: 'assets/icons/color/ic-alert-circle-outline.svg',
+    iconUrl: 'assets/icons/active/ic-question-mark-circle-outline.svg',
     iconClass: '',
     btnCancelClass: '',
     btnOkClass: 'primary',
@@ -99,7 +101,7 @@ export const ModalType = {
   },
   'warning': {
     type: 'warning',
-    iconUrl: 'assets/icons/color/ic-alert-circle-outline.svg',
+    iconUrl: 'assets/icons/active/ic-triangle-danger-f.svg',
     iconClass: '',
     btnCancelClass: '',
     btnOkClass: 'primary',

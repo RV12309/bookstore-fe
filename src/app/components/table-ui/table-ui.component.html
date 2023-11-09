@@ -30,7 +30,7 @@
     </div>
   </div>
   <p-table
-    [value]="dataTable"
+    [value]="[]"
     styleClass="custom-table"
     [rows]="rowsPerPageOptions[0]"
     [paginator]="paginator"
@@ -56,6 +56,7 @@
             inputId="binary"
           ></p-checkbox>
         </th>
+        <th>STT</th>
         <ng-container *ngFor="let header of titleTable">
           <th>
             {{ header?.title }}
@@ -73,31 +74,45 @@
       let-rowIndex="rowIndex"
 
     >
-      <tr [pSelectableRow]="item" [pSelectableRowIndex]="rowIndex">
-        <td
-          *ngIf="checkbox"
-          class="text-center"
-        >
-          <!-- <p-tableCheckbox [value]="item"></p-tableCheckbox> -->
-          <p-checkbox
-            [(ngModel)]="checked"
-            [binary]="true"
-            inputId="binary"
-          ></p-checkbox>
-        </td>
-        <ng-container
-          [ngTemplateOutlet]="tableBody"
-          [ngTemplateOutletContext]="{item: item, rowIndex: rowIndex}"
-        >
-        </ng-container>
-        <td *ngIf="showAction" class="flex gap-x-2">
+      <ng-container *ngIf="dataTable?.length; then dataTpl else noDataTpl"></ng-container>
+      <ng-template #dataTpl>
+        <tr [pSelectableRow]="item" [pSelectableRowIndex]="rowIndex">
+          <td
+            *ngIf="checkbox"
+            class="text-center"
+          >
+            <!-- <p-tableCheckbox [value]="item"></p-tableCheckbox> -->
+            <p-checkbox
+              [(ngModel)]="checked"
+              [binary]="true"
+              inputId="binary"
+            ></p-checkbox>
+          </td>
+          <td></td>
           <ng-container
-            [ngTemplateOutlet]="tableAction"
+            [ngTemplateOutlet]="tableBody"
             [ngTemplateOutletContext]="{item: item, rowIndex: rowIndex}"
           >
           </ng-container>
-        </td>
-      </tr>
+          <td *ngIf="showAction" class="flex gap-x-2">
+            <ng-container
+              [ngTemplateOutlet]="tableAction"
+              [ngTemplateOutletContext]="{item: item, rowIndex: rowIndex}"
+            >
+            </ng-container>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template #noDataTpl>
+        <tr *ngFor="let item of [1,2,3,4,5]">
+          <td *ngIf="checkbox"><p-skeleton></p-skeleton></td>
+          <td><p-skeleton></p-skeleton></td>
+          <td *ngFor="let i of titleTable"><p-skeleton></p-skeleton></td>
+        </tr>
+      </ng-template>
+
+
+
     </ng-template>
   </p-table>
 </p-card>

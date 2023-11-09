@@ -7,19 +7,21 @@
     </div>
     <div class="col-span-2">
       <label for="" class="w-full">Mô tả</label>
-      <input type="text" pInputText placeholder="Nhập mô tả" formControlName="description"/>
+      <textarea rows="5" pInputTextarea [autoResize]="true" placeholder="Nhập mô tả"  formControlName="description"></textarea>
+
     </div>
   </div>
   <!-- footer -->
   <div class="flex gap-x-3 justify-end">
-    <p-button
+    <!-- <p-button
       [outlined]="true"
-      severity="danger"
+      styleClass="bg-danger"
       (onClick)="closeModal()"
     >
       Đóng
-    </p-button>
+    </p-button> -->
     <p-button
+      *ngIf="!isView"
       styleClass="w-24"
       (onClick)="submit()"
     >

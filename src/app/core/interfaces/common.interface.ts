@@ -16,3 +16,17 @@ export interface ISelectItem {
   name: string;
   code: string;
 }
+
+
+export interface IToastProperty {
+  key?: string;
+  severity?: string;
+  summary?: string;
+  detail: string;
+  sticky?: boolean;
+}
+
+export interface ILoading {
+  isLoading:boolean;
+  time?:number
+}

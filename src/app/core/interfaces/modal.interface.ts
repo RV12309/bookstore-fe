@@ -1,6 +1,6 @@
 import { ModalSize, PositionModal } from "../enums";
 
-export type TypeModal = 'info' | 'delete' | 'success' | 'error' | 'verify' | 'confirm';
+export type TypeModal = 'info' | 'delete' | 'success' | 'error' | 'verify' | 'confirm'|'warning';
 export interface IModalConfig {
   data:any;
   header: string;

@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { StorageKey } from "src/app/core/enums";
 import { IMenuSidebar } from "src/app/core/interfaces";
 import { StoreService } from "src/app/core/services";
+import { AuthService } from "src/app/core/services/auth/auth.service";
+import { ModalService } from "src/app/core/services/modal";
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -14,7 +17,10 @@ export class SidebarMenuComponent implements OnInit{
   public isExpand = true;
 
   constructor(
-    private storeService:StoreService
+    private storeService:StoreService,
+    private modalService: ModalService,
+    private router:Router,
+    private authService: AuthService
   ){
   }
 
@@ -25,5 +31,9 @@ export class SidebarMenuComponent implements OnInit{
   expand(){
     this.isExpand =  !this.isExpand;
     this.storeService.setSession(StorageKey.isExpand, (this.isExpand)?'':'false')
+  }
+
+  logout(){
+    this.authService.logout();
   }
 }

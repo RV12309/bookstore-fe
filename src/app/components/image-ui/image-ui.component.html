@@ -1,0 +1,16 @@
+<p-image
+  [srcSet]="srcSet"
+  [src]="src"
+  [previewImageSrc]="previewImageSrc"
+  [previewImageSrcSet]="previewImageSrcSet"
+  [loading]="loading"
+  [preview]="preview"
+  [imageClass]="imageClass"
+  [imageStyle]="imageStyle"
+  [style]="style"
+  [alt]="alt"
+  (onShow)="onShowEmit($event)"
+  (onHide)="onHideEmit($event)"
+  (onImageError)="onImageErrorEmit($event)"
+>
+</p-image>

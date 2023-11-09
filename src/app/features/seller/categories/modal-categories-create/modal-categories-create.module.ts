@@ -4,6 +4,7 @@ import { ModalCategoriesCreateComponent } from './modal-categories-create.compon
 import { ButtonModule } from "primeng/button";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { InputTextModule } from "primeng/inputtext";
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 
@@ -16,7 +17,8 @@ import { InputTextModule } from "primeng/inputtext";
     ButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    InputTextModule
+    InputTextModule,
+    InputTextareaModule
   ],
   exports: [
     ModalCategoriesCreateComponent

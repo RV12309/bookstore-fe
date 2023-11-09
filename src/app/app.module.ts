@@ -11,6 +11,9 @@ import { ButtonModule } from "primeng/button";
 import { CloudinaryModule } from "@cloudinary/ng";
 import { RequestInterceptor } from "./core/interceptors/request.interceptor";
 import { ResponseInterceptor } from "./core/interceptors/response.interceptor";
+import { MessageService } from "primeng/api";
+import { LoadingModule } from "./components/loading/loading.module";
+import { LoadingInterceptor } from "./core/interceptors/loading.interceptor";
 
 @NgModule({
   declarations: [
@@ -25,9 +28,11 @@ import { ResponseInterceptor } from "./core/interceptors/response.interceptor";
     ToastModule,
     ButtonModule,
     CloudinaryModule,
+    LoadingModule
   ],
   providers: [
     DialogService,
+    MessageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,
@@ -36,6 +41,11 @@ import { ResponseInterceptor } from "./core/interceptors/response.interceptor";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
       multi: true
     }
   ],

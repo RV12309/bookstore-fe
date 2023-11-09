@@ -15,6 +15,7 @@
     [titleTable]="titleTable"
     [isSearch]="true"
     [showAction]="true"
+    [checkbox]="false"
     [dataTable]="dataTable"
     [total]="total"
     (searchChange)="searchChange($event)"
@@ -43,6 +44,7 @@
           severity="secondary"
           styleClass="button-table"
           [outlined]="true"
+          (onClick)="update(item)"
         >
           <img
             src="assets/icons/default/ic-edit-pencil.svg"
@@ -53,6 +55,7 @@
           severity="secondary"
           styleClass="button-table"
           [outlined]="true"
+          (onClick)="delete(item)"
         >
           <img
             src="assets/icons/default/ic-trash.svg"

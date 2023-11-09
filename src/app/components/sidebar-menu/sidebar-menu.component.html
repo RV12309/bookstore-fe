@@ -40,7 +40,7 @@
         >
           <img
             [src]="'assets/icons/default/' + i?.icon"
-            class="w-6"
+            class="w-5"
             alt=""
           />
           <p
@@ -65,13 +65,13 @@
         alt=""
       />
     </button>
-    <button class="flex items-center gap-x-3 h-12 w-[max-content] p-2 rounded-xl cursor-pointer">
+    <div class="flex items-center gap-x-3 w-[max-content] text-sm font-medium hover:text-purple duration-300" (click)="logout()">
       <img
-        src="assets/icons/default/ic-arrow-autofit-left.svg"
+        src="assets/icons/default/ic-logout.svg"
         class="w-6"
         alt=""
       />
       <span *ngIf="isExpand" class="">Đăng xuất</span>
-    </button>
+    </div>
   </div>
 </div>

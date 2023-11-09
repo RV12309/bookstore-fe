@@ -8,6 +8,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { InputTextModule } from "primeng/inputtext";
+import { SkeletonModule } from 'primeng/skeleton';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InputTextModule } from "primeng/inputtext";
     CheckboxModule,
     FormsModule,
     ReactiveFormsModule,
-    InputTextModule
+    InputTextModule,
+    SkeletonModule
   ],
   exports: [
     TableUiComponent

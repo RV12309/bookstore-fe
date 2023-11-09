@@ -1,9 +1,11 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
 import { MessageService } from "primeng/api";
-import { Subscription, fromEvent, map, merge, of } from "rxjs";
+import { Subject, Subscription, fromEvent, map, merge, of, takeUntil } from "rxjs";
 import { StoreService } from "./core/services";
 import { StorageKey } from "./core/enums";
 import { Cloudinary } from "@cloudinary/url-gen";
+import { ToastService } from "./core/services/toast.service";
+import { IToastProperty } from "./core/interfaces";
 
 @Component({
   selector: "app-root",
@@ -11,14 +13,17 @@ import { Cloudinary } from "@cloudinary/url-gen";
   styleUrls: ["./app.component.scss"],
   providers: [MessageService],
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   private networkStatus: boolean = false;
   private isOnline:any;
   private networkStatus$: Subscription = Subscription.EMPTY;
+  private destroy$ = new Subject();
+
   public visible: boolean = false;
   constructor(
     private messageService: MessageService,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -27,6 +32,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.checkNetworkStatus();
+    this.alertSystem();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(null);
   }
 
   checkNetworkStatus() {
@@ -36,7 +46,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       fromEvent(window, "online"),
       fromEvent(window, "offline"),
     )
-      .pipe(map(() => navigator.onLine))
+      .pipe(
+        map(() => navigator.onLine),
+        takeUntil(this.destroy$)
+      )
       .subscribe((status: any) => {
         if(''+status !== this.storeService.getSession(StorageKey.isOnl)){
           this.messageService.clear();
@@ -82,5 +95,18 @@ export class AppComponent implements OnInit, AfterViewInit {
   onReject() {
     this.messageService.clear("confirm");
     this.visible = false;
+  }
+
+  alertSystem(): void {
+    this.toastService.toastObs()
+    .pipe(
+      takeUntil(this.destroy$)
+    )
+    .subscribe({
+      next: (response:IToastProperty) => {
+        this.messageService.add(response);
+      }
+    })
+
   }
 }

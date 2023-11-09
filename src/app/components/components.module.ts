@@ -11,14 +11,14 @@ import { FileUploadModule } from 'primeng/fileupload';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'primeng',
     component: ComponentsComponent
   }
 ]
 
 @NgModule({
   declarations: [
-    ComponentsComponent
+    ComponentsComponent,
   ],
   imports: [
     CommonModule,
