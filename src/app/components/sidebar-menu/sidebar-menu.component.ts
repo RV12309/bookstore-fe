@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from "@angular/router";
 import { StorageKey } from "src/app/core/enums";
 import { IMenuSidebar } from "src/app/core/interfaces";
@@ -12,6 +12,7 @@ import { ModalService } from "src/app/core/services/modal";
   styleUrls: ['./sidebar-menu.component.scss']
 })
 export class SidebarMenuComponent implements OnInit{
+  @ViewChild('website') website!:ElementRef;
   @Input() menuList!:IMenuSidebar[];
 
   public isExpand = true;

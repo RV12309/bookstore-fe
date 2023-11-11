@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DropdownUiComponent } from './dropdown-ui.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 
 
@@ -11,7 +12,9 @@ import { DropdownModule } from 'primeng/dropdown';
   ],
   imports: [
     CommonModule,
-    DropdownModule
+    DropdownModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     DropdownUiComponent

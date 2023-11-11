@@ -1,5 +1,5 @@
 import { Component, ContentChild, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
-import { TablePageEvent } from "primeng/table";
+import { TablePageEvent, TableRowSelectEvent, TableRowUnSelectEvent, TableSelectAllChangeEvent } from "primeng/table";
 import { DATA_KEY } from "src/app/core/constant/common.constant";
 import { ITablePageChange, ITitleTable } from "src/app/core/interfaces/table.interface";
 
@@ -24,6 +24,7 @@ export class TableUiComponent implements OnInit{
   @Input() showCurrentPageReport = false;
   @Input() titleTable:ITitleTable[] = [];
   @Input() checkbox = true;
+  @Input() radio = false;
   @Input() isSearch = false;
   @Input() placeholderSearch = "Tìm kiếm";
   @Input() showAction = false;
@@ -33,13 +34,17 @@ export class TableUiComponent implements OnInit{
   @Input() showFirstLastIcon = false;
   @Input() dataKey = DATA_KEY;
   @Input() sortIcon = '';
-
+  @Input() selectionPageOnly = false;
 
   @Output() searchChange = new EventEmitter<string>();
   @Output() refreshData = new EventEmitter<any>();
   @Output() onPage = new EventEmitter<any>();
   @Output() rowsChange = new EventEmitter<any>();
   @Output() firstChange = new EventEmitter<any>();
+  @Output() selectAllChange = new EventEmitter<TableSelectAllChangeEvent>();
+  @Output() selectionChange = new EventEmitter<any>();
+  @Output() onRowSelect = new EventEmitter<TableRowSelectEvent>();
+  @Output() onRowUnselect = new EventEmitter<TableRowUnSelectEvent>();
 
 
   checked: boolean = false;
@@ -72,8 +77,9 @@ export class TableUiComponent implements OnInit{
   ];
   public dataTableSkeleton = [1,2,3,4,5];
 
-  ngOnInit(): void {
+  public selectedProducts:any[] = [];
 
+  ngOnInit(): void {
   }
 
   searchTableChange(event:any){
@@ -97,5 +103,23 @@ export class TableUiComponent implements OnInit{
 
   firstTableChange(e:number){
     this.firstChange.emit(e);
+  }
+
+  checkboxAllChange(e:TableSelectAllChangeEvent){
+    console.log(e);
+    this.selectAllChange.emit(e)
+  }
+
+  checkboxChange(e:TableSelectAllChangeEvent){
+    console.log(e);
+    this.selectionChange.emit(e)
+  }
+
+  rowSelect(e:TableRowSelectEvent){
+    this.onRowSelect.emit(e);
+  }
+
+  rowUnselect(e:TableRowUnSelectEvent){
+    this.onRowUnselect.emit(e);
   }
 }

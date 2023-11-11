@@ -3,13 +3,13 @@
   @apply py-3 rounded-xl m-2;
   .p-menu-list {
     // @apply bg-red-300
-    .p-submenu-header{
+    .p-submenu-header {
       @apply mb-1 mt-2 font-bold text-purple;
     }
   }
   .p-menuitem {
     @apply hover:bg-purple-light flex gap-x-3 duration-300;
-    >*{
+    > * {
       @apply bg-transparent #{!important};
     }
     .p-menuitem-text:hover,
@@ -25,7 +25,7 @@
     a:hover {
       @apply bg-purple-light w-full;
     }
-    .p-menuitem-content{
+    .p-menuitem-content {
       @apply w-full h-full p-3;
     }
   }
@@ -64,17 +64,17 @@
     @apply ring-2 ring-offset-1 ring-purple;
   }
   &.p-button-outlined {
-    @apply bg-white text-purple #{!important}
+    @apply bg-white text-purple #{!important};
   }
-  &.p-button-rounded{
+  &.p-button-rounded {
     @apply rounded-full #{!important};
   }
-  .p-badge{
+  .p-badge {
     @apply w-6 h-6 p-0 ml-2 center;
   }
-  .p-button-icon{
-    &.p-button-icon-left{
-      @apply mr-2
+  .p-button-icon {
+    &.p-button-icon-left {
+      @apply mr-2;
     }
   }
 }
@@ -85,7 +85,7 @@
     @apply ring-2 ring-offset-1 ring-brown;
   }
   &.p-button-outlined {
-    @apply bg-white text-brown #{!important}
+    @apply bg-white text-brown #{!important};
   }
 }
 
@@ -95,7 +95,7 @@
     @apply ring-2  ring-offset-1 ring-orange;
   }
   &.p-button-outlined {
-    @apply bg-white text-orange  #{!important}
+    @apply bg-white text-orange  #{!important};
   }
 }
 
@@ -105,7 +105,7 @@
     @apply ring-2 ring-offset-1 ring-green;
   }
   &.p-button-outlined {
-    @apply bg-white text-green #{!important}
+    @apply bg-white text-green #{!important};
   }
 }
 
@@ -115,7 +115,7 @@
     @apply ring-2 ring-offset-1 ring-info;
   }
   &.p-button-outlined {
-    @apply bg-white text-info  #{!important}
+    @apply bg-white text-info  #{!important};
   }
 }
 
@@ -125,7 +125,7 @@
     @apply ring-2 ring-offset-1 ring-help;
   }
   &.p-button-outlined {
-    @apply bg-white text-help border  #{!important}
+    @apply bg-white text-help border  #{!important};
   }
 }
 
@@ -135,17 +135,16 @@
     @apply ring-2 ring-offset-1 ring-danger;
   }
   &.p-button-outlined {
-    @apply bg-white text-danger  #{!important}
+    @apply bg-white text-danger  #{!important};
   }
 }
 
-.button-table{
+.button-table {
   @apply w-10 aspect-square center border-brown/30 #{!important};
-  img{
-    @apply w-5
+  img {
+    @apply w-5;
   }
 }
-
 
 // Card
 .p-card {
@@ -156,7 +155,8 @@
 }
 
 // Input
-input, .p-inputtextarea {
+input,
+.p-inputtextarea {
   @apply w-full border border-solid border-purple/50 focus:border-purple rounded-xl duration-300 #{!important};
 }
 
@@ -168,23 +168,23 @@ input, .p-inputtextarea {
   }
 }
 
-.input-icon{
-  &-left{
+.input-icon {
+  &-left {
     @apply relative;
-    img{
-      @apply absolute w-6 left-2 top-1/2 -translate-y-1/2 ;
+    img {
+      @apply absolute w-6 left-2 top-1/2 -translate-y-1/2;
     }
-    input{
+    input {
       @apply pl-9;
     }
   }
 }
 
 // Input number
-p-inputnumber, .p-inputnumber{
+p-inputnumber,
+.p-inputnumber {
   @apply w-full #{!important};
 }
-
 
 // Dropdown
 .p-dropdown {
@@ -228,6 +228,7 @@ p-inputnumber, .p-inputnumber{
     }
   }
 }
+//==========================================================================================
 
 // Table
 .p-table {
@@ -254,7 +255,10 @@ p-inputnumber, .p-inputnumber{
   }
   .p-sortable-column.p-highlight {
     @apply text-purple #{!important};
-}
+  }
+  .p-datatable-scrollable-table > .p-datatable-thead {
+    z-index: 500;
+  }
 }
 
 .custom-table .p-datatable-wrapper {
@@ -267,8 +271,19 @@ p-inputnumber, .p-inputnumber{
   @apply p-5;
 }
 
+.custom-table {
+  tr.p-highlight {
+    @apply text-purple bg-orange/10 #{!important};
+  }
+}
+
 .custom-table th {
-  @apply text-purple bg-gray font-semibold text-base;
+  @apply text-purple bg-purple-light font-semibold text-base z-[500];
+}
+
+.custom-table td {
+  p-tablecheckbox {
+  }
 }
 
 .custom-table tr:nth-child(even) {
@@ -278,7 +293,7 @@ p-inputnumber, .p-inputnumber{
   @apply bg-gray/50;
 }
 
-
+//==========================================================================================
 
 // Tooltip
 .p-tooltip {
@@ -289,8 +304,7 @@ p-inputnumber, .p-inputnumber{
   }
 }
 
-// Dialog
-
+// DIALOG
 .p-dialog {
   @apply outline-none border-none rounded-xl bg-white shadow-none;
   .p-dialog-header {
@@ -332,15 +346,16 @@ p-inputnumber, .p-inputnumber{
   }
 }
 
+//  CHECKBOX
 .p-checkbox {
   .p-checkbox-box {
-    @apply border border-solid border-purple rounded-lg;
+    @apply border border-solid border-purple rounded-lg w-6 h-6;
     &:hover {
       @apply bg-purple-light;
     }
   }
   .p-checkbox-box.p-highlight {
-    @apply bg-purple box-border shadow-none;
+    @apply bg-purple shadow-none;
     &:focus {
       @apply shadow-none;
     }
@@ -350,39 +365,56 @@ p-inputnumber, .p-inputnumber{
 // Upload
 
 .p-fileupload.p-fileupload-advanced {
-  .p-fileupload-buttonbar{
+  .p-fileupload-buttonbar {
     @apply flex gap-x-3;
-    .p-fileupload-choose{
+    .p-fileupload-choose {
       @apply min-h-full px-3 #{!important};
     }
   }
 }
 
-
-.p-disabled, .p-component:disabled {
+.p-disabled,
+.p-component:disabled {
   @apply opacity-100;
 }
-
 
 // Textarea
 // .p-inputtextarea{
 //   @apply w-full rounded-xl border;
 // }
 
-
 // Breadcrumb
-.p-breadcrumb{
+.p-breadcrumb {
   @apply bg-transparent #{!important};
-  homeicon{
+  homeicon {
     @apply hidden;
   }
 }
 
-.p-image{
-  .p-image-mask{
+.p-image {
+  .p-image-mask {
     @apply rounded-xl overflow-hidden #{!important};
   }
-  .p-image-toolbar{
+  .p-image-toolbar {
     @apply absolute top-3 right-3 #{!important};
+  }
+}
+
+//==========================================================================================
+
+// RADIO BUTTON
+.p-radiobutton {
+  // @apply bg-red-400;
+  .p-radiobutton-box {
+    @apply border border-solid border-brown shadow-none;
+    &.p-highlight {
+      @apply bg-purple;
+    }
+    &:active {
+      @apply shadow-none;
+    }
+    .p-radiobutton-icon {
+      @apply bg-purple-light;
+    }
   }
 }

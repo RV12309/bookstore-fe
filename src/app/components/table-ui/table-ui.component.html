@@ -30,6 +30,7 @@
     </div>
   </div>
   <p-table
+    #dt
     styleClass="custom-table"
     [value]="dataTable || dataTableSkeleton"
     [rows]="rowsPerPageOptions[0]"
@@ -40,28 +41,37 @@
     [scrollHeight]="scrollHeight"
     [showFirstLastIcon]="showFirstLastIcon"
     [dataKey]="dataKey"
+    [selectionPageOnly]="selectionPageOnly"
     (onPage)="pageChange($event)"
     (firstChange)="firstTableChange($event)"
     (rowsChange)="rowsTableChange($event)"
+    (selectAllChange)="checkboxAllChange($event)"
+    (selectionChange)="checkboxChange($event)"
+    (onRowSelect)="rowSelect($event)"
+    (onRowUnselect)="rowUnselect($event)"
   >
     <ng-template pTemplate="caption">
-      <!-- <div class="flex align-items-center justify-content-between">
-          Products
-          <p-button icon="pi pi-refresh"></p-button>
-      </div> -->
+      <!-- Đây là Caption Template -->
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th
           *ngIf="checkbox"
-          class="text-center"
+          class=""
+          style="width: 4rem"
         >
-          <p-checkbox
+          <!-- <p-checkbox
             [(ngModel)]="checked"
             [binary]="true"
             inputId="binary"
-          ></p-checkbox>
+          ></p-checkbox> -->
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
         </th>
+        <th
+          *ngIf="radio"
+          class=""
+          style="width: 4rem"
+        ></th>
         <th>STT</th>
         <ng-container *ngFor="let header of titleTable">
           <th [pSortableColumn]="header?.sort ? header?.key : ''">
@@ -74,6 +84,9 @@
         <th
           *ngIf="showAction"
           [ngStyle]="{ width: actionWidth || '250px' }"
+          alignFrozen="right"
+          pFrozenColumn
+          [frozen]="true"
         >
           Hành động
         </th>
@@ -92,12 +105,15 @@
           *ngIf="checkbox"
           class="text-center"
         >
-          <!-- <p-tableCheckbox [value]="item"></p-tableCheckbox> -->
-          <p-checkbox
+          <p-tableCheckbox [value]="item"></p-tableCheckbox>
+          <!-- <p-checkbox
             [(ngModel)]="checked"
             [binary]="true"
             inputId="binary"
-          ></p-checkbox>
+          ></p-checkbox> -->
+        </td>
+        <td *ngIf="radio">
+          <p-tableRadioButton [value]="item"></p-tableRadioButton>
         </td>
         <td></td>
         <ng-container
@@ -107,6 +123,9 @@
         <td
           *ngIf="showAction"
           class="flex gap-x-2"
+          alignFrozen="right"
+          pFrozenColumn
+          [frozen]="true"
         >
           <ng-container
             [ngTemplateOutlet]="tableAction"

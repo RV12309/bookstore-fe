@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SidebarMenuComponent } from './sidebar-menu.component';
 import { DividerModule } from 'primeng/divider';
 import { RouterModule } from "@angular/router";
+import { ButtonModule } from "primeng/button";
 
 
 
@@ -13,7 +14,8 @@ import { RouterModule } from "@angular/router";
   imports: [
     CommonModule,
     DividerModule,
-    RouterModule
+    RouterModule,
+    ButtonModule
   ],
   exports: [
     SidebarMenuComponent

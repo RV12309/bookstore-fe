@@ -6,4 +6,6 @@
   [placeholder]="placeholder"
   [disabled]="disabled"
   [filter]="filter"
+  [(ngModel)]="selectedValue"
 ></p-dropdown>
+{{selectedValue | json}}

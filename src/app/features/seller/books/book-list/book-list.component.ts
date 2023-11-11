@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { IFilterItem, InputType } from "src/app/core/interfaces";
+import { IFilterItem, ISelectItem, InputType } from "src/app/core/interfaces";
 import { ITitleTable } from "src/app/core/interfaces/table.interface";
 import { BooksService } from "src/app/core/services/books/books.service";
 import { ModalService } from 'src/app/core/services/modal';
 import { BookCreateComponent } from "../book-create/book-create.component";
 import { ModalSize } from "src/app/core/enums";
+import { CategoryService } from "src/app/core/services/category/category.service";
+import { ICategoryData } from "src/app/core/interfaces/category.interface";
+import { DropdownService } from "src/app/core/services/dropdown.service";
 
 @Component({
   selector: 'app-book-list',
@@ -12,19 +15,25 @@ import { ModalSize } from "src/app/core/enums";
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit{
+
+  public categoriesOriginal:ICategoryData[] = [];
+  public categories:ISelectItem[] = [];
   public filterKeys:IFilterItem<any>[] = [
     {
       type: InputType.Input,
       controlName: 'title',
       label: 'Tên sách',
       icon: 'assets/icons/default/ic-archive.svg',
-      placeholder: 'Nhập tên sách'
+      placeholder: 'Nhập tên sách',
+      defaultValue: 'harry'
     },
     {
       type: InputType.Select,
       controlName: 'categoryId',
       label: 'Danh mục',
-      icon: 'assets/icons/default/ic-archive.svg'
+      icon: 'assets/icons/default/ic-archive.svg',
+      dataList: this.categories,
+      placeholder: 'Chọn danh mục',
     },
     // {
     //   type: InputType.DatePicker,
@@ -54,13 +63,16 @@ export class BookListComponent implements OnInit{
   ]
   constructor(
     private modalService: ModalService,
-    private booksService: BooksService
+    private booksService: BooksService,
+    private categoryService: CategoryService,
+    private dropdownService: DropdownService
   ){
 
   }
 
   ngOnInit(): void {
-    this.changeParams()
+    // this.changeParams()
+    this.getCategoryList();
   }
 
   changeParams(){
@@ -70,6 +82,35 @@ export class BookListComponent implements OnInit{
         size: 10
       }
     ).subscribe()
+  }
+
+  getCategoryList(){
+    this.categoryService.getCategoryAll()
+    .subscribe({
+      next: resp => {
+        this.categories = this.dropdownService.renderList(
+          resp?.data,
+          'name',
+          'id'
+        );
+        // this.categories = resp?.data?.map(i => {
+        //   return {
+        //     name: i?.name,
+        //     code: i?.id
+        //   }
+        // }) as any
+
+        console.log(this.categories, 'this.categories');
+
+
+        const filterAfterRerender = this.dropdownService.rerenderList(
+          this.filterKeys,
+          this.categories,
+          'categoryId'
+        );
+        this.filterKeys = [...filterAfterRerender];
+      }
+    })
   }
 
   create(){

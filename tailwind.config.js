@@ -25,14 +25,17 @@ module.exports = {
         '2xl': '1496px' //1536px
       },
       aspectRatio: {
+        '3/4': '3 / 4',
         '4/3': '4 / 3',
-        '3/4': '3 / 4'
+        '2/3': '2 / 3',
+        '3/2': '3 / 2'
       },
       boxShadow: {
         '#1': '#6C5DD470 0px 7px 29px 0px',
       },
       fontFamily: {
         'second': ['Grandstander'],
+        'kanit' : ['Kanit', 'sans-serif']
       },
       transitionDuration: {
         '400': '400ms',

@@ -1,12 +1,20 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { ControlValueAccessor, FormGroupDirective, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { ISelectItem } from "src/app/core/interfaces";
 
 @Component({
   selector: 'app-dropdown-ui',
   templateUrl: './dropdown-ui.component.html',
-  styleUrls: ['./dropdown-ui.component.scss']
+  styleUrls: ['./dropdown-ui.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: DropdownUiComponent,
+      multi: true,
+    }
+  ]
 })
-export class DropdownUiComponent implements OnInit{
+export class DropdownUiComponent implements OnInit, ControlValueAccessor {
   @Input() editable = false;
   @Input() optionLabel = "name";
   @Input() placeholder = "";
@@ -22,9 +30,37 @@ export class DropdownUiComponent implements OnInit{
     { name: 'Paris', code: 'PRS' }
   ];
 
-  constructor(){}
+  public selectedValue!:ISelectItem;
+
+  onChange!: (provinceData: any) => void;
+  onTouched!: () => void;
+
+  constructor(
+    private formGroupDirective: FormGroupDirective
+  ){}
+
 
   ngOnInit(): void {
+    this.selectedValue = this.cities[2]
     this.dataList = this.dataList || this.cities;
+  }
+
+  changeValue(e:any){
+    console.log(e);
+
+  }
+
+  writeValue(value: any) {
+    console.log('writeValue',value);
+    // this.selectedValue = value;
+  }
+
+  registerOnChange(fn: any) {
+  }
+
+  registerOnTouched(fn: any) {
+  }
+
+  setDisabledState(isDisabled: boolean) {
   }
 }
