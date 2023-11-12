@@ -18,7 +18,11 @@ export class ToastService {
       key:'system',
       severity: 'info',
       summary: 'Thông báo',
-      sticky: true,
+      sticky: false,
+      life: 3500,
+      position: "top-right",
+      preventDuplicates: true,
+      preventOpenDuplicates: true,
       ...property
     }
     this.toast$.next(params)

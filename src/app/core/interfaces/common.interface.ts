@@ -15,6 +15,7 @@ export interface IMenuSidebarChild {
 export interface ISelectItem {
   name: string;
   code: string;
+  value:string;
 }
 
 
@@ -24,6 +25,12 @@ export interface IToastProperty {
   summary?: string;
   detail: string;
   sticky?: boolean;
+  life?:number;
+  style?:Object;
+  styleClass?:string;
+  position?:"center" | "top-right" | "top-left" | "bottom-left" | "bottom-right" | "top-center" | "bottom-center";
+  preventOpenDuplicates?:boolean;
+  preventDuplicates?:boolean;
 }
 
 export interface ILoading {

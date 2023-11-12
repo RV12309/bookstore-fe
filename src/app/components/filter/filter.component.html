@@ -26,17 +26,15 @@
         <label>{{item?.label}}</label>
         <app-dropdown-ui
           classList="w-full"
-          [dataList]="item?.dataList || []"
-          [formControlName]="item?.controlName"
         ></app-dropdown-ui>
       </div>
 
-      <div *ngSwitchCase="InputType.DatePicker">
+      <!-- <div *ngSwitchCase="InputType.DatePicker">
         <label>{{item?.label}}</label>
         <app-date-ui
           [placeholder]="item?.placeholder"
         ></app-date-ui>
-      </div>
+      </div> -->
     </ng-container>
   </ng-template>
 </p-card>

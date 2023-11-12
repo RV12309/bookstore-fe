@@ -11,12 +11,15 @@ export class DropdownService {
   public renderList(
     list:any[] = [],
     nameKey:string = 'name',
-    codeKey:string = 'value'
+    codeKey:string = 'value',
+    valueKey:string = 'value'
+
   ){
     return list?.map(i => {
       return {
         name: i[nameKey],
-        code: i[codeKey]
+        code: i[codeKey],
+        value: i[valueKey]
       }
     })
   }
