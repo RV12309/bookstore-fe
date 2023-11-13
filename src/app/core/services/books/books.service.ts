@@ -14,12 +14,12 @@ export class BooksService {
   constructor(private http: HttpClient) { }
 
   getBooksList(body: IBookSearchForm): Observable<IResponse<IBooksResponse>>{
-    const queryParams = new HttpParams(
-      {
-        fromObject: {...body}
-      }
-    )
-    return this.http.get<IResponse<IBooksResponse>>(`${this.baseUrl}${WCEndPoint.Book}?${queryParams}`);
+    // const queryParams = new HttpParams(
+    //   {
+    //     fromObject: {...body}
+    //   }
+    // )
+    return this.http.post<IResponse<IBooksResponse>>(`${this.baseUrl}${WCEndPoint.Book}/list?`, {body});
   }
 
   getBookById(body: string): Observable<IResponse<IBookData>>{

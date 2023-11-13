@@ -1,7 +1,7 @@
 <div [formGroup]="form">
   <p-dropdown
     styleClass="w-full"
-    [options]="cities"
+    [options]="dataList || cities"
     [editable]="editable"
     [optionLabel]="optionLabel"
     [placeholder]="placeholder"
@@ -12,5 +12,4 @@
     formControlName="dropdown"
     dataKey="value"
   ></p-dropdown>
-  {{ dropdownCotrol?.value | json }}
 </div>

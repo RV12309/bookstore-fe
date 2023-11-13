@@ -18,6 +18,10 @@ export class BookListComponent implements OnInit{
 
   public categoriesOriginal:ICategoryData[] = [];
   public categories:ISelectItem[] = [];
+  public params = {
+    page: 0,
+    size: 5
+  }
   public filterKeys:IFilterItem<any>[] = [
     {
       type: InputType.Input,
@@ -73,6 +77,7 @@ export class BookListComponent implements OnInit{
   ngOnInit(): void {
     // this.changeParams()
     this.getCategoryList();
+    this.getBookList();
   }
 
   changeParams(){
@@ -111,6 +116,10 @@ export class BookListComponent implements OnInit{
         this.filterKeys = [...filterAfterRerender];
       }
     })
+  }
+
+  getBookList(){
+    this.booksService.getBooksList(this.params).subscribe();
   }
 
   create(){

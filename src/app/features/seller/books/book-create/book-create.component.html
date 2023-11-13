@@ -7,15 +7,16 @@
     </div>
     <div class="col-span-2">
       <label for="" class="w-full">Tác giả</label>
-      <input type="text" pInputText formControlName="title"/>
+      <input type="text" pInputText formControlName="author"/>
     </div>
     <div class="">
       <label for="">Danh mục</label>
-      <app-dropdown-ui></app-dropdown-ui>
+      <app-dropdown-ui [dataList]="categories"
+      ></app-dropdown-ui>
     </div>
     <div class="">
       <label for="">Người xuất bản</label>
-      <input type="text" pInputText formControlName="title"/>
+      <input type="text" pInputText formControlName="publisher"/>
     </div>
     <div class="">
       <label for="">Ngày xuất bản</label>
@@ -66,6 +67,7 @@
     </p-button>
     <p-button
       styleClass="w-24"
+      (onClick)="submit()"
     >
       Lưu
     </p-button>
